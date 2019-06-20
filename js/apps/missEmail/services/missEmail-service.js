@@ -16,8 +16,16 @@ function query() {
     return Promise.resolve(gEmails);
   }
 
+  function howManyEmailsUnread(emails){
+    let counter=0;
+    emails.forEach((email)=>{
+        if (email.isRead) counter ++
+    })
+    return counter
+  }
 
   export  const missEmailService= {
     query,
+    howManyEmailsUnread
   }
   
