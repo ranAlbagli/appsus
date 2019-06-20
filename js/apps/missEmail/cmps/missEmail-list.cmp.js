@@ -3,7 +3,7 @@
 import  emailPreview from '../cmps/email-preview.cmp.js';
 
 
-import {missEmailService} from '../services/missEmail-service.js'
+import { missEmailService } from '../services/missEmail-service.js'
 
 
 
@@ -24,22 +24,22 @@ export default {
     props: ['emails'],
     data() {
         return {
-           
+
         }
     },
     computed: {
-     
+
     },
     created() {
-        
+
     },
     methods: {
         // select(currBook){
-        
+
         //     this.$emit('selected', currBook);
-            
+
         // }
-      
+
     },
     components:{
          emailPreview
