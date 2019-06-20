@@ -10,18 +10,17 @@ export default {
 
             <div class="emails-side-bar"></div>
             <div>
-                <email-list :emails="emails"></email-list>
+                <email-filter @set-filter="setFilter"></email-filter> 
+                <email-list :emails="emailsToShow"></email-list>
             </div>
-            <email-filter @set-filter="setFilter"></email-filter> 
-            <email-list :emails="emailsToShow"></email-list>
      </section>
 `
     ,
     data() {
         return {
-            emails: [] ,
+            emails: [],
             filter: ''
-             
+
         }
     },
     created() {
