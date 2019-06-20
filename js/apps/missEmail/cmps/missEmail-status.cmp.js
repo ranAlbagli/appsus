@@ -13,9 +13,14 @@ export default {
    },
    computed:{
            readEmails(){
-              this.emails.length - missEmailService.howManyEmailsUnread(this.emails)         
+               return this.emails.length - missEmailService.howManyEmailsUnread(this.emails)         
              }
+   },
+   created(){
+        
    },
    components :{
    }
+
+
 }
