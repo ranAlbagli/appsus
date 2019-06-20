@@ -36,6 +36,11 @@ export default {
             console.log(emailId)
             this.toggleReadStatus(emailId);
         })
+
+        bus.$on('delete', (emailId) => {
+            console.log(emailId)
+            this.deleteEmail(emailId);
+        })
     },
     computed: {
         emailsToShow() {    
@@ -54,10 +59,17 @@ export default {
             
             emailService.addEmail(email)
         },
-        toggleReadStatus(emailId) {
-            emailService.setReadUnread(emailId).then(() => {
+        toggleReadStatus(emailId) {    
+            emailService.setReadUnread(emailId)
+            .then(() => {
                 console.log('toggle from bus');
             });
+
+        },
+        deleteEmail(emailId) {
+
+            emailService.deleteEmailById(emailId)
+
 
         }
     },

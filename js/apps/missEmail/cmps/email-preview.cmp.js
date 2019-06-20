@@ -23,10 +23,13 @@ export default {
     methods: {
         emitEmailRead() {
             console.log('emitted')
-            bus.$emit('setread', this.email.id);
+            console.log(this.email._id);
+            
+            bus.$emit('setread', this.email._id);
         },
         emitEmailDelete() {
-
+            bus.$emit('delete', this.email._id);
+            
         }
     },
     computed: {

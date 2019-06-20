@@ -35,7 +35,7 @@ function addEmail(email) {
 }
 
 function findEmailById(emailId) {
-  const email = gEmails.find(email => { email._id === emailId })
+  const email = gEmails.find(email => { email.id === emailId })
   return Promise.resolve(email);
 }
 
@@ -43,18 +43,17 @@ function deleteEmailById(emailId) {
   const emailIdx = getEmailIdx(emailId);
   gEmails.splice(emailIdx, 1);
   emailStorageService.store(EMAILS_KEY, gEmails);
-  Promise.resolve(console.log(`${emailId} removed`))
+  return Promise.resolve(console.log(`${emailId} removed`))
 }
-function setReadUnread(emailId) {
+function setReadUnread(emailId) { 
   const emailIdx = getEmailIdx(emailId);
-  let mark = gEmails[emailIdx].isRead ? false : true;
-  gEmails[emailIdx].isRead = mark;
+  gEmails[emailIdx].isRead= !gEmails[emailIdx].isRead
   emailStorageService.store(EMAILS_KEY, gEmails);
-  Promise.resolve(console.log(`${emailId} read=${mark}`))
+  return Promise.resolve()
 }
 
-function getEmailIdx(emailId) {
-  return gEmails.findIndex(email => { email._id === emailId });
+function getEmailIdx(emailId) {  
+  return gEmails.findIndex( email => email._id === emailId );
 }
 
 function createEmail(email){
