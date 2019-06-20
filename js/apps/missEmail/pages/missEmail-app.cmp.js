@@ -1,34 +1,34 @@
 
-import {missEmailService} from '../services/missEmail-service.js'
+import { missEmailService } from '../services/missEmail-service.js'
 import emailList from '../cmps/missEmail-list.cmp.js'
 export default {
 
 
-template:`
+    template: `
      <section class="email-app" v-if="emails">
             <email-list :emails="emails"></email-list>
      </section>
 `
-,
-data(){
-    return {
-          emails:[]
-    }
-},
+    ,
+    data() {
+        return {
+            emails: []
+        }
+    },
 
 
-created(){
-   
-        this.emails = missEmailService.query ()
-        .then((res)=>{
+    created() {
 
+        missEmailService.query()
+            .then((res) => {
+                this.emails = res;
                 console.log(res);
-                
-        })
-},
 
-components:{
-    emailList
-}
+            })
+    },
+
+    components: {
+        emailList
+    }
 
 }
