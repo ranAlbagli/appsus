@@ -1,19 +1,16 @@
 export default {
     template: `
-        <div class="email-preview">
-                <div class="email-from">{{this.email.from}}</div>
+        <div class="email-preview flex align center space-between">
                 <div class="email-subject">{{this.email.subject}}</div>
                 <div class="email-controls">
-                    <button
-                    >Delete</button>
-                    <button>Mark Read</button>
+                    <button class="preview-btn">Delete</button>
+                    <button class="preview-btn">Mark Read</button>
                 </div>
-                <div class="email-body">{{this.email.body}}</div>
         </div>
     `,
     data() {
         return {
-            
+
         }
     },
     props: ['email'],
@@ -23,7 +20,7 @@ export default {
     computed: {
 
     },
-    created(){
+    created() {
         console.log(this.email)
     }
 

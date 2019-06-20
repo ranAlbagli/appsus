@@ -1,24 +1,19 @@
-
-
+//cmps import
 import emailPreview from '../cmps/email-preview.cmp.js'
 
-
+//service import
 import { missEmailService } from '../services/missEmail-service.js'
-
-
 
 export default {
     template: `
    <section>
-        <h1>emils</h1>
-        <ul  class="email-list">
+        <ul class="email-list">
                 <email-preview 
                               v-for="currentEmail in emails" 
                               :key="currentEmail.id"
                               :email="currentEmail">
                 </email-preview>
             </ul>
-
     </section>
     `,
     props: ['emails'],
@@ -34,11 +29,6 @@ export default {
 
     },
     methods: {
-        // select(currBook){
-
-        //     this.$emit('selected', currBook);
-
-        // }
 
     },
     components: {

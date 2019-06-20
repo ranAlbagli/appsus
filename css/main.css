@@ -1,7 +1,12 @@
+@import "email-preview-cmp.css";
 /* CSS RESET */
 
 * {
     box-sizing: border-box;
+}
+
+html {
+    font-family: sans-serif;
 }
 
 body, h1, h2, h3, h4, h5, h6, p, div, header, footer {
@@ -35,4 +40,8 @@ body, h1, h2, h3, h4, h5, h6, p, div, header, footer {
 .fixed-top {
     position: fixed;
     top: 0;
+}
+
+.flex-col {
+    flex-direction: column;
 }

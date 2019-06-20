@@ -6,7 +6,11 @@ export default {
 
     template: `
      <section class="email-app" v-if="emails">
-            <email-list :emails="emails"></email-list>
+
+            <div class="emails-side-bar"></div>
+            <div>
+                <email-list :emails="emails"></email-list>
+            </div>
      </section>
 `
     ,
