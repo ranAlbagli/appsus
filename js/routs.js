@@ -1,10 +1,10 @@
 //imports
 import homePage from './pages/homePage.js';
-import missEmailAppCmp from './apps/missEmail/pages/missEmail-app.cmp.js';
+import emailApp from './apps/missEmail/pages/emailApp.cmp.js';
 
 
 export default [
     { path: '/', component: homePage },
-    { path: '/mail', component: missEmailAppCmp },
+    { path: '/mail', component: emailApp },
 
 ]

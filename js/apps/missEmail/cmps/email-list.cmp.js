@@ -1,9 +1,8 @@
 //cmps import
 import emailPreview from '../cmps/email-preview.cmp.js'
 
-
 //service import
-import { missEmailService } from '../services/missEmail-service.js'
+import { emailService } from '../services/emailService.js'
 
 export default {
     template: `

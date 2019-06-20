@@ -1,8 +1,8 @@
 
-import { missEmailService } from '../services/missEmail-service.js'
-import emailList from '../cmps/missEmail-list.cmp.js'
+import { emailService } from '../services/emailService.js'
+import emailList from '../cmps/email-list.cmp.js'
 import emailFilter from '../cmps/email-filter.cmp.js'
-import emailStatus from '../cmps/missEmail-status.cmp.js'
+import emailStatus from '../cmps/email-status.cmp.js'
 export default {
 
 
@@ -27,7 +27,7 @@ export default {
         }
     },
     created() {
-        missEmailService.query()
+        emailService.query()
             .then((res) => {
                 this.emails = res;
                 console.log(res);
