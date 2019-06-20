@@ -38,9 +38,11 @@ export default {
         })
     },
     computed: {
-        emailsToShow() {
+        emailsToShow() {    
             if (!this.filter) return this.emails;
-            return this.emails.filter(email => email.subject.includes(this.filter))
+            if (this.filter.read) return this.emails.filter(email => email.isRead)  
+            if (!this.filter.read) return this.emails.filter(email => !email.isRead)  
+            return this.emails.filter(email => email.subject.includes(this.filter.txt)) 
         }
     },
     methods: {

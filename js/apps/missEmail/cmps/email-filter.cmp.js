@@ -6,18 +6,22 @@ export default {
         <section class="emails-filter">
             <h1>Emails Filter</h1>
             <input type="text" v-model="filterBy.txt" @input="emitFilter" />
+            <button  @click="emitFilter"> read</button>
+            <button  @click="emitFilter"> unread</button>
         </section>
     `,
     data() {
         return {
             filterBy: {
-                txt: ''
-            }
+                txt: '',   
+                read : false,    
+             }
         }
     },
     methods: {
         emitFilter() {
-            this.$emit('set-filter', this.filterBy.txt);
+            this.filterBy.read=!this.filterBy.read
+            this.$emit('set-filter', this.filterBy);
         }
     }
 }
