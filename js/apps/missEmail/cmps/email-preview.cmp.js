@@ -31,8 +31,8 @@ export default {
     },
     computed: {
         formatDate() {
-            const date = new Date(this.email.sentAt);  
-            const day= date.getDate();
+            const date = new Date(this.email.sentAt);
+            const day = date.getDate();
             const month = date.getMonth()+1;
             const year = date.getFullYear();
             const hours = date.getHours();

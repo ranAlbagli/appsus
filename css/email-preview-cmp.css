@@ -1,13 +1,19 @@
 .email-preview {
-    /* margin-bottom: 3px; */
     color: black;
+    margin-bottom: 3px;
     padding-top: 2px;
     padding-bottom: 2px;
     padding-left: 10px;
     padding-right: 10px;
-    border: 1px solid gray;
-    /* border-radius: 5px; */
+    border: none;
+    border-bottom: 1px solid gray;
     background-color: #f2f4f4;
+    z-index: 1;
+}
+
+.email-preview:hover {
+    box-shadow: 0 0 7px 2px black;
+    z-index: 3;
 }
 
 .email-date {
