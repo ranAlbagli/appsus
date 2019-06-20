@@ -1,12 +1,13 @@
 .email-preview {
-    margin-bottom: 3px;
+    /* margin-bottom: 3px; */
     color: black;
     padding-top: 2px;
     padding-bottom: 2px;
     padding-left: 10px;
     padding-right: 10px;
     border: 1px solid gray;
-    border-radius: 5px;
+    /* border-radius: 5px; */
+    background-color: #f2f4f4;
 }
 
 .email-date {
@@ -17,18 +18,25 @@
 .preview-btn {
     appearance: none;
     border: none;
-    border: 1px solid white;
     color: black;
     background-color: lightskyblue;
-    width: 100px;
     height: 30px;
     border-radius: 5px;
     margin: 2px;
+    width: 90px;
 }
 
 .delete-btn {
     background-color: red;
     color: white;
+    width: 30px;
 }
 
-.
+.bold {
+    font-weight: bold;
+}
+
+.mail-read {
+    font-weight: bold;
+    background-color: white;
+}
