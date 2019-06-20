@@ -24,7 +24,17 @@ function howManyEmailsUnread(emails) {
   return counter
 }
 
+function addEmail(email){
+  console.log(email);
+  
+  // email.id = makeId()
+  // gEmails.push(email)
+  // storageService.store(EMAILS_KEY, gEmails)
+
+}
+
 export const emailService = {
   query,
-  howManyEmailsUnread
+  howManyEmailsUnread,
+  addEmail
 }

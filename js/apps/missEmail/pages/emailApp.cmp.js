@@ -3,6 +3,7 @@ import { emailService } from '../services/emailService.js'
 import emailList from '../cmps/email-list.cmp.js'
 import emailFilter from '../cmps/email-filter.cmp.js'
 import emailStatus from '../cmps/email-status.cmp.js'
+import emailCompose from '../cmps/email-compose.cmp.js'
 
 export default {
     template: `
@@ -10,6 +11,7 @@ export default {
 
             <div class="emails-side-bar">
             <email-status :emails="emails"></email-status>
+            <email-compose @new-email="sendEmail" ></email-compose>
             </div>
             <div>
                 <email-filter @set-filter="setFilter"></email-filter> 
@@ -39,13 +41,17 @@ export default {
     methods: {
         setFilter(filter) {
             this.filter = filter
+        },
+        sendEmail(email){ 
+            emailService.addEmail(email)
         }
     },
 
     components: {
         emailList,
         emailFilter,
-        emailStatus
+        emailStatus,
+        emailCompose
     }
 
 }
