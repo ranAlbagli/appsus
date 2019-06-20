@@ -19,11 +19,10 @@ data(){
 
 created(){
    
-        this.emails = missEmailService.query ()
+        emails = missEmailService.query ()
         .then((res)=>{
-
-                console.log(res);
-                
+            //  return res;
+             this.emails=res;    
         })
 },
 

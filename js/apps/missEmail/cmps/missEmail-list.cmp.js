@@ -1,6 +1,6 @@
 
 
-// import  emailPreview from './book-preview.cmp.js';
+import  emailPreview from '../cmps/email-preview.cmp.js';
 
 
 import {missEmailService} from '../services/missEmail-service.js'
@@ -42,6 +42,6 @@ export default {
       
     },
     components:{
-         emailsPreview
+         emailPreview
     }
 }
