@@ -1,6 +1,7 @@
 
 import emailStorageService from './emailStorageService.js'
 import { testData } from '../../../../data.js'
+import utilService from '../../../services/utils-service.js'
 
 const EMAILS_KEY = 'emails';
 let gEmails = [];
@@ -25,11 +26,9 @@ function howManyEmailsUnread(emails) {
 }
 
 function addEmail(email){
-  console.log(email);
-  
-  // email.id = makeId()
-  // gEmails.push(email)
-  // storageService.store(EMAILS_KEY, gEmails)
+  email.id = utilService.makeId()
+  gEmails.unshift(email)
+  emailStorageService.store(EMAILS_KEY, gEmails)
 
 }
 

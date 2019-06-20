@@ -2,7 +2,7 @@
 export default {
 
     template:` <section>
-                  <form @submit.prevent="saveEmail">
+                  <form @submit.prevent="sendEmail">
                   <input  autofocus v-model="email.subject" placeholder="Subject">
                   <textarea  v-model="email.body"></textarea>
                   <button :disabled="invalid">Send</button>          
