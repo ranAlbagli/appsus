@@ -2,8 +2,6 @@
 import emailPreview from '../cmps/email-preview.cmp.js'
 
 
-import  emailPreview from '../cmps/email-preview.cmp.js';
-
 //service import
 import { missEmailService } from '../services/missEmail-service.js'
 
@@ -34,7 +32,7 @@ export default {
     methods: {
 
     },
-    components:{
-         emailPreview
+    components: {
+        emailPreview
     }
 }
