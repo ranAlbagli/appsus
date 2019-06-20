@@ -1,5 +1,5 @@
 
-import { missEmailService } from '../services/missEmail-service.js'
+import { emailService } from '../services/emailService.js'
 export default {
   template:`
   <div>  Read emails status {{readEmails}} </div>
@@ -13,7 +13,7 @@ export default {
    },
    computed:{
            readEmails(){
-               return this.emails.length - missEmailService.howManyEmailsUnread(this.emails)         
+               return this.emails.length - emailService.howManyEmailsUnread(this.emails)         
              }
    },
    created(){
