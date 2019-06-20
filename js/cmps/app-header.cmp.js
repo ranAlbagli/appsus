@@ -1,3 +1,3 @@
 export default {
-    template: `<h1>this is header</h1>`
+    template: `<header class=""><h1>this is header</h1></header>`
 }

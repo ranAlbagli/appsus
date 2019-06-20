@@ -1,0 +1,38 @@
+/* CSS RESET */
+
+* {
+    box-sizing: border-box;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, div, header, footer {
+    padding: 0;
+    margin: 0;
+}
+
+/* Helpers */
+
+.flex {
+    display: flex;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.fixed-bottom {
+    position: fixed;
+    bottom: 0;
+}
+
+.fixed-top {
+    position: fixed;
+    top: 0;
+}
