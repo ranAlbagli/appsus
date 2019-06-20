@@ -3,9 +3,8 @@ import { missEmailService } from '../services/missEmail-service.js'
 import emailList from '../cmps/missEmail-list.cmp.js'
 import emailFilter from '../cmps/email-filter.cmp.js'
 import emailStatus from '../cmps/missEmail-status.cmp.js'
+
 export default {
-
-
     template: `
      <section class="email-app" v-if="emails">
 
@@ -17,13 +16,11 @@ export default {
                 <email-list :emails="emailsToShow"></email-list>
             </div>
      </section>
-`
-    ,
+   `,
     data() {
         return {
             emails: [],
             filter: ''
-
         }
     },
     created() {
