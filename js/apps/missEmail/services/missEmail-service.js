@@ -1,5 +1,6 @@
 
 import missEmailStorageService from './missEmail-storage-service.js'
+import {testData} from '../../../../data.js'
 
 const EMAILS_KEY = 'emails';
 let gEmails =[];
@@ -7,17 +8,16 @@ let gEmails =[];
 
 
 function query() {
-    gEmails = missEmailStorageService.load(BOOKS_KEY);
+    gEmails = missEmailStorageService.load(EMAILS_KEY);
     if (!gEmails) {
-      gEmails = generateEmails();
-      issEmailStorageService.store(BOOKS_KEY, gBooks)
+      gEmails = testData
+      missEmailStorageService.store(EMAILS_KEY, gEmails)
     }
     return Promise.resolve(gEmails);
-  
   }
 
 
-  export default {
+  export  const missEmailService= {
     query,
   }
   
