@@ -13,7 +13,7 @@ var app = new Vue({
         console.log('App has been Created!');
     },
     template: `
-        <div>
+        <div>  
             <app-header></app-header>
             <router-view></router-view>
             <app-footer></app-footer>
