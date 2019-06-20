@@ -2,13 +2,16 @@
 import { missEmailService } from '../services/missEmail-service.js'
 import emailList from '../cmps/missEmail-list.cmp.js'
 import emailFilter from '../cmps/email-filter.cmp.js'
+import emailStatus from '../cmps/missEmail-status.cmp.js'
 export default {
 
 
     template: `
      <section class="email-app" v-if="emails">
 
-            <div class="emails-side-bar"></div>
+            <div class="emails-side-bar">
+            <email-status :emails="emails"></email-status>
+            </div>
             <div>
                 <email-filter @set-filter="setFilter"></email-filter> 
                 <email-list :emails="emailsToShow"></email-list>
@@ -44,7 +47,8 @@ export default {
 
     components: {
         emailList,
-        emailFilter
+        emailFilter,
+        emailStatus
     }
 
 }

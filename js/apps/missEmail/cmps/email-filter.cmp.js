@@ -17,7 +17,7 @@ export default {
     },
     methods: {
         emitFilter() {
-            this.$emit('set-filter', this.filterBy);
+            this.$emit('set-filter', this.filterBy.txt);
         }
     }
 }
