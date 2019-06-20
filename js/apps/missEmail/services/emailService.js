@@ -25,15 +25,40 @@ function howManyEmailsUnread(emails) {
   return counter
 }
 
-function addEmail(email){
+function addEmail(email) {
   email.id = utilService.makeId()
   gEmails.unshift(email)
   emailStorageService.store(EMAILS_KEY, gEmails)
 
 }
 
+function findEmailById(emailId) {
+  const email = gEmails.find(email => { email._id === emailId })
+  return Promise.resolve(email);
+}
+
+function deleteEmailById(emailId) {
+  const emailIdx = getEmailIdx(emailId);
+  gEmails.splice(emailIdx, 1);
+  emailStorageService.store(EMAILS_KEY, gEmails);
+  Promise.resolve(console.log(`${emailId} removed`))
+}
+function setReadUnread(emailId) {
+  const emailIdx = getEmailIdx(emailId);
+  let mark = gEmails[emailIdx].isRead ? false : true;
+  gEmails[emailIdx].isRead = mark;
+  emailStorageService.store(EMAILS_KEY, gEmails);
+  Promise.resolve(console.log(`${emailId} read=${mark}`))
+}
+
+function getEmailIdx(emailId) {
+  return gEmails.findIndex(email => { email._id === emailId });
+}
 export const emailService = {
   query,
   howManyEmailsUnread,
-  addEmail
+  addEmail,
+  findEmailById,
+  deleteEmailById,
+  setReadUnread
 }

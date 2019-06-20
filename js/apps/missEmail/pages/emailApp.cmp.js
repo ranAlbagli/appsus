@@ -5,10 +5,11 @@ import emailFilter from '../cmps/email-filter.cmp.js'
 import emailStatus from '../cmps/email-status.cmp.js'
 import emailCompose from '../cmps/email-compose.cmp.js'
 
+import { bus } from '../../../services/eventBus-service.js'
+
 export default {
     template: `
      <section class="email-app" v-if="emails">
-
             <div class="emails-side-bar">
             <email-status :emails="emails"></email-status>
             <email-compose @new-email="sendEmail" ></email-compose>
@@ -31,6 +32,10 @@ export default {
                 this.emails = res;
                 console.log(res);
             })
+        bus.$on('setread', (emailId) => {
+            console.log(emailId)
+            this.toggleReadStatus(emailId);
+        })
     },
     computed: {
         emailsToShow() {
@@ -42,8 +47,14 @@ export default {
         setFilter(filter) {
             this.filter = filter
         },
-        sendEmail(email){ 
+        sendEmail(email) {
             emailService.addEmail(email)
+        },
+        toggleReadStatus(emailId) {
+            emailService.setReadUnread(emailId).then(() => {
+                console.log('toggle from bus');
+            });
+
         }
     },
 

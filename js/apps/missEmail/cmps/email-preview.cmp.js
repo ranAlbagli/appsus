@@ -1,3 +1,6 @@
+import { bus } from '../../../services/eventBus-service.js'
+
+
 export default {
     template: `
         <div class="email-preview flex space-between align-center" :class="isRead">
@@ -18,10 +21,11 @@ export default {
     },
     props: ['email'],
     methods: {
-        emitEmailRead(){
-            
+        emitEmailRead() {
+            console.log('emitted')
+            bus.$emit('setread', this.email.id);
         },
-        emitEmailDelete(){
+        emitEmailDelete() {
 
         }
     },
