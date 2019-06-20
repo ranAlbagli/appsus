@@ -40,9 +40,9 @@ export default {
     computed: {
         emailsToShow() {    
             if (!this.filter) return this.emails;
-            if (this.filter.read) return this.emails.filter(email => email.isRead)  
-            if (!this.filter.read) return this.emails.filter(email => !email.isRead)  
-            return this.emails.filter(email => email.subject.includes(this.filter.txt)) 
+            if (this.filter.read) return this.emails.filter(email =>{ return email.isRead &&email.subject.includes(this.filter.txt)}) 
+            if (!this.filter.read) return this.emails.filter(email => {return !email.isRead && email.subject.includes(this.filter.txt)})  
+            // return this.emails.filter(email => email.subject.includes(this.filter.txt)) 
         }
     },
     methods: {
@@ -50,6 +50,8 @@ export default {
             this.filter = filter
         },
         sendEmail(email) {
+            console.log('adding ',email);
+            
             emailService.addEmail(email)
         },
         toggleReadStatus(emailId) {

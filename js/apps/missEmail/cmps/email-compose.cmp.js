@@ -28,7 +28,15 @@ export default {
     methods :{
         sendEmail(){       
             
-            this.$emit('new-email',this.email)              
+            this.$emit('new-email',this.email)
+            this.email={
+                id : '',
+                subject : '',
+                body : '',
+                isRead: false,
+                sentAt: new Date()
+
+            }              
         }
     },
 }

@@ -6,8 +6,9 @@ export default {
         <section class="emails-filter">
             <h1>Emails Filter</h1>
             <input type="text" v-model="filterBy.txt" @input="emitFilter" />
-            <button  @click="emitFilter"> read</button>
-            <button  @click="emitFilter"> unread</button>
+            <button  @click="toggle"> READ</button>
+            <button  @click="toggle"> UNREAD</button>
+            <!-- <button  @click="all"> ALL</button> -->
         </section>
     `,
     data() {
@@ -19,8 +20,15 @@ export default {
         }
     },
     methods: {
-        emitFilter() {
+        // all(){
+        //     this.filterBy=null
+        //     this.emitFilter();
+        // },
+        toggle(){
             this.filterBy.read=!this.filterBy.read
+            this.emitFilter();
+        },
+        emitFilter() {
             this.$emit('set-filter', this.filterBy);
         }
     }
