@@ -12,7 +12,9 @@ export default {
      <section class="email-app" v-if="emails">
             <div class="emails-side-bar">
             <email-status :emails="emails"></email-status>
-            <email-compose @new-email="sendEmail" ></email-compose>
+            <button id="show-modal" @click="showModal = true">Show Modal</button>
+            <email-compose v-if="showModal" @close="showModal = false" @new-email="sendEmail" ></email-compose>
+            <h3 slot="header">custom header</h3>   
             </div>
             <div>
                 <email-filter @set-filter="setFilter"></email-filter> 
@@ -23,7 +25,8 @@ export default {
     data() {
         return {
             emails: [],
-            filter: ''
+            filter: '',
+            showModal:false
         }
     },
     created() {
@@ -49,7 +52,20 @@ export default {
             if (!this.filter) return this.emails;
             if (this.filter.read) return this.emails.filter(email =>{ return email.isRead &&email.subject.includes(this.filter.txt)}) 
             if (!this.filter.read) return this.emails.filter(email => {return !email.isRead && email.subject.includes(this.filter.txt)})  
-        }
+        },
+
+
+
+
+        // emailsToShow() {
+        //     let emailsArr = this.emails;
+        //     let filteredBooks = emailsArr.filter((email) => {
+        //         return ((email.subject.indexOf(this.filter.txt) !== -1 || this.filter.txt === '') &&
+        //             (email.isRead) )
+                 
+        //     })
+        //     return filteredBooks;
+        // }
     },
     methods: {
         setFilter(filter) {
