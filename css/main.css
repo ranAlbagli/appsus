@@ -183,8 +183,11 @@ body, h1, h2, h3, h4, h5, h6, p, div, header, footer {
   }
 
   .nav-modal{
-      background-color: black;
-      width: 100%
+      background-color: #252f37;;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      color: white
   }
   form{
     height: 400px;
@@ -195,12 +198,49 @@ body, h1, h2, h3, h4, h5, h6, p, div, header, footer {
 
   textarea{
     height: 357px;
+    
+  }
+
+  .modal-input{
+
+    height: 33px;
+    font-size: 15px;
   }
 
   .exit-btn{
 
-    background-color: black;
+    background-color: #252f37;
     appearance: none;
     border: none;
-    color: white
+    color: white;
   }
+
+
+  /*  */
+
+.compose-btn{
+
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 19px;
+    padding: 13px 10px;
+    padding-right: 20px;
+    border-radius: 33px;
+    box-shadow: -1px 1px 3px 1px #0000007d;
+    display: flex;
+    align-items: center;
+}
+
+.send-btn{
+
+    background-color: #0084ff;
+    color: white;
+    border: none;
+    font-size: 17px;
+    padding: 10px;
+    border-radius: 5px;
+    width: 75px;
+    font-weight: 200;
+}

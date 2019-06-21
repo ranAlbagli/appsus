@@ -26,13 +26,13 @@ export default {
       <div class="modal-wrapper">   
           <div class="modal-container">
                 <div class="nav-modal">
-
+                    New Message
                     <button class="exit-btn" @click="$emit('close')"> <i class="fas fa-times"></i></button>
                 </div>
             <form @submit.prevent="sendEmail">
-                 <input  autofocus v-model="email.subject" placeholder="Subject">   
+                 <input class="modal-input" autofocus v-model="email.subject" placeholder="Subject">   
                  <textarea  v-model="email.body"></textarea>
-                 <button :disabled="invalid">Send</button>
+                 <button class="send-btn" :disabled="invalid">Send</button>
               </form>
         </div>
       </div>
