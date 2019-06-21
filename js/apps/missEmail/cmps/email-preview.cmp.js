@@ -3,25 +3,15 @@ import { bus } from '../../../services/eventBus-service.js'
 
 export default {
     template: `
-        <!-- <div class="email-preview flex space-between align-center" :class="isRead">
-                <div :class="isRead">{{this.email.subject}}</div>
-                <div class="email-controls flex ">
-                    <div class="email-date flex align-center">{{formatDate}}</div>
-                    <div>
-                        <button @click="emitEmailDelete" class="preview-btn delete-btn"><i class="fas fa-trash-alt"></i></button>
-                        <button @click="emitEmailRead" class="preview-btn">{{this.btnText}}</button>
-                    </div>
-                </div>
-        </div> -->
-        <div class="email-row flex align-center">
+        <div class="email-row flex align-center" :class="isRead">
                     <div class="email-star"><button><i class="fas fa-star"></i></button></div>
                     <div class="email-sender-pic"><img src="21.jpg" alt=""></div>
                     <div class="email-sender-name">Danny</div>
-                    <div class="email-preview"><span>User Testing </span>Hi James this is Jammy </div>
-                    <div class="email-date">00:00 12/07/2019</div>
+                    <div class="email-preview"><span>{{this.email.subject}}</span>{{this.email.body.substring(0, 10)}}</div>
+                    <div class="email-date">{{formatDate}}</div>
                     <div class="email-options">
-                        <button><i class="fas fa-envelope"></i></button>
-                        <button><i class="fas fa-trash"></i></button>
+                        <button @click="emitEmailRead"><i :class="btnText"></i></button>
+                        <button @click="emitEmailDelete"><i class="fas fa-trash"></i></button>
                     </div>
         </div>
     `,
@@ -54,10 +44,10 @@ export default {
             return `${day}/${month}/${year} ${hours >= 10 ? hours : '0' + hours}:${minutes >= 10 ? minutes : '0' + minutes}`;
         },
         isRead() {
-            return this.email.isRead ? '' : 'mail-read';
+            return this.email.isRead ? 'mail-read' : '';
         },
         btnText() {
-            return this.email.isRead ? 'Mark Unread' : 'Mark Read'
+            return this.email.isRead ? 'fas fa-envelope-open-text' : 'fas fa-envelope'
         }
     },
     created() {

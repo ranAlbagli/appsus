@@ -3,7 +3,7 @@ import { emailService } from '../services/emailService.js'
 import emailList from '../cmps/email-list.cmp.js'
 import emailFilter from '../cmps/email-filter.cmp.js'
 import emailStatus from '../cmps/email-status.cmp.js'
-import emailCompose from '../cmps/email-compose.cmp.js'
+import emailCompose from '../cmps/email-compose-cmp.js'
 
 import { bus } from '../../../services/eventBus-service.js'
 
@@ -21,6 +21,8 @@ export default {
             </div>
      </section> -->
      <main class="flex">
+     <button  class="compose-btn" @click="showModal = true"><i class="fas fa-pen"></i></button>
+     <email-compose v-if="showModal" @close="showModal = false" @new-email="sendEmail" ></email-compose>
         <div class="mails-aside ui-box flex flex-col">
                 <div class="user-status flex align-center">
                     <img src="21.jpg" alt="" />

@@ -46,6 +46,7 @@
 
 .email-preview span {
     color: #323c47;
+    text-transform: capitalize;
 
 }
 .email-date{
@@ -62,4 +63,7 @@
     cursor: pointer;
     outline:none;
     background-color: rgba(0, 0, 0, 0.0);
+}
+.mail-read{
+    background-color: #f1f4f4;
 }
