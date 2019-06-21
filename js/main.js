@@ -6,6 +6,7 @@ const appRouter = new VueRouter({ routes: theRoutes })
 
 import appHeader from './cmps/app-header.cmp.js'
 import appFooter from './cmps/app-footer.cmp.js'
+// import homePage from './pages/homePage.js';
 
 var app = new Vue({
     el: '#app',
@@ -15,13 +16,15 @@ var app = new Vue({
     template: `
         <div>  
             <app-header></app-header>
+            <!-- <home-page></home-page> -->
             <main><router-view></router-view></main>
             <app-footer></app-footer>
         </div>
     `,
     components: {
         appHeader,
-        appFooter
+        appFooter,
+        // homePage
     },
     methods: {
     },
