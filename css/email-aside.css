@@ -1,0 +1,43 @@
+/* mails aside*/
+
+.mails-aside {
+    flex-grow: 1;
+    height: 100vh;
+}
+
+.user-status {
+    box-shadow: 0 1px 0px 0px #b3b3b3;
+    padding-left: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.user-status img {
+    width: 45px;
+    height: 45px;
+    border-radius: 7px;
+    margin-right: 16px;
+    display: block;
+}
+
+.user-name {
+    text-transform: capitalize;
+    color: #323c47;
+    font-size: 20px
+}
+
+.user-role {
+    color: #b3b3b3;
+    text-transform: capitalize;
+    font-size: 14px;
+}
+
+
+.mails-aside-nav ul li {
+    padding-left: 40px;
+    /* background-color: black; */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+}

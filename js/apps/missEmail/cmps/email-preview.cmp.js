@@ -3,7 +3,7 @@ import { bus } from '../../../services/eventBus-service.js'
 
 export default {
     template: `
-        <div class="email-preview flex space-between align-center" :class="isRead">
+        <!-- <div class="email-preview flex space-between align-center" :class="isRead">
                 <div :class="isRead">{{this.email.subject}}</div>
                 <div class="email-controls flex ">
                     <div class="email-date flex align-center">{{formatDate}}</div>
@@ -12,6 +12,17 @@ export default {
                         <button @click="emitEmailRead" class="preview-btn">{{this.btnText}}</button>
                     </div>
                 </div>
+        </div> -->
+        <div class="email-row flex align-center">
+                    <div class="email-star"><button><i class="fas fa-star"></i></button></div>
+                    <div class="email-sender-pic"><img src="21.jpg" alt=""></div>
+                    <div class="email-sender-name">Danny</div>
+                    <div class="email-preview"><span>User Testing </span>Hi James this is Jammy </div>
+                    <div class="email-date">00:00 12/07/2019</div>
+                    <div class="email-options">
+                        <button><i class="fas fa-envelope"></i></button>
+                        <button><i class="fas fa-trash"></i></button>
+                    </div>
         </div>
     `,
     data() {

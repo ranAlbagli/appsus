@@ -1,0 +1,34 @@
+/* email stats */
+.email-stats{
+    margin-bottom: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.email-stats i{
+    font-size: 20px;
+    padding: 20px;
+    background-color: #f2f9ff;
+    border-radius: 100%;
+    border: 1px solid #d7ebff;
+    color: #2290ff;
+}
+.email-stats .property{
+    font-size: 16px;
+    text-transform: capitalize;
+    color: #323c47;
+    font-weight: bold;
+}
+.email-stats .count{
+    font-size: 30px;
+    color: #323c47;
+}
+.email-stats .text{
+    padding-left: 30px;
+}
+.email-stats .email-stats-data-box:not(:last-child){
+    border-right:1px solid #e9eff4;
+}
+.email-stats-data-box{
+    flex-grow: 1;
+    padding-left: 50px;
+}

@@ -6,15 +6,13 @@ import { emailService } from '../services/emailService.js'
 
 export default {
     template: `
-   <section>
-        <ul class="email-list">
+   <div class="email-list ui-box">
                 <email-preview 
                               v-for="currentEmail in emails" 
                               :key="currentEmail.id"
                               :email="currentEmail">
                 </email-preview>
-            </ul>
-    </section>
+    </div>
     `,
     props: ['emails'],
     data() {

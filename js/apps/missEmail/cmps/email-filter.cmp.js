@@ -3,15 +3,24 @@
 
 export default {
     template: `
-        <section class="emails-filter">
+        <!-- <section class="emails-filter">
             <h1>Emails Filter</h1>
             <input type="text" v-model="filterBy.txt" @input="emitFilter" />
             <button  @click="read"> READ</button>
             <button  @click="unread"> UNREAD</button>
             <button  @click="all"> ALL</button>
-            <!-- <button  @click="starred"> STARRED</button> -->
-            <!-- <button  @click="all"> ALL</button> -->
-        </section>
+            <button  @click="starred"> STARRED</button> 
+            <button  @click="all"> ALL</button>
+        </section> -->
+        <div class="email-list-header flex space-between align-center">
+                    <p class="email-list-header-title">messages</p>
+                    <div class="email-list-filter flex">
+                        <button class="filter-btn">all</button>
+                        <button class="filter-btn filter-btn-active">unread</button>
+                        <button class="filter-btn">read</button>
+                        <button class="filter-btn">important</button>
+                    </div>
+        </div>
     `,
     data() {
         return {
