@@ -11,6 +11,7 @@ export default [
         // UserHome will be rendered inside User's <router-view>
         // when /user/:id is matched
         { path: '/', component: emailDetails },
+        
       ]
     }
 ]
