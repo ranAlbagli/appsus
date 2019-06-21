@@ -1,4 +1,9 @@
 @import "email-preview-cmp.css";
+@font-face {
+    font-family: Lato-regular;
+    src: url('../fonts/lato/Lato-Regular.ttf');
+}
+
 /* CSS RESET */
 
 * {
@@ -7,9 +12,10 @@
 }
 
 html {
-    font-family: sans-serif;
+    font-family: 'lato-regular', sans-serif;
 }
-button{
+
+button {
     cursor: pointer;
 }
 
