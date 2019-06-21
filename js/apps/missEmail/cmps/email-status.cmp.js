@@ -1,21 +1,25 @@
 
 import { emailService } from '../services/emailService.js'
 export default {
-  template:`
-  <div>  Read emails status {{readEmails}} </div>
-  
+  template:`   
+               <div class="progress-bar-container">
+               <div class="progress-bar" :style="{ 'width': readEmails +'%'}" >{{readEmails}}%</div>  
+               </div>
   `, 
    props:['emails'],
    data(){
     return {
-            //  readEmailsNum:0
+        
     }
    },
    computed:{
            readEmails(){
-               return this.emails.length - emailService.howManyEmailsUnread(this.emails)         
+                   console.log(this.emails.length);
+                   
+               return    emailService.howManyEmailsUnread(this.emails) / this.emails.length 
              }
    },
+ 
    created(){
         
    },

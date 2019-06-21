@@ -20,7 +20,7 @@ function query() {
 function howManyEmailsUnread(emails) {
   let counter = 0;
   emails.forEach((email) => {
-    if (email.isRead) counter++
+    if (!email.isRead) counter++
   })
   return counter
 }

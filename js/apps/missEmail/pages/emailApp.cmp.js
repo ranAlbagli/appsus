@@ -13,8 +13,7 @@ export default {
             <div class="emails-side-bar">
             <email-status :emails="emails"></email-status>
             <button  class="compose-btn" @click="showModal = true"><img src="https://www.gstatic.com/images/icons/material/colored_icons/1x/create_32dp.png" alt=""/><p>Compose</p></button>
-            <email-compose v-if="showModal" @close="showModal = false" @new-email="sendEmail" ></email-compose>
-            <h3 slot="header">custom header</h3>   
+            <email-compose v-if="showModal" @close="showModal = false" @new-email="sendEmail" ></email-compose>  
             </div>
             <div>
                 <email-filter @set-filter="setFilter"></email-filter> 
