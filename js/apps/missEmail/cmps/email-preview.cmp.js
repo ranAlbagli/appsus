@@ -40,7 +40,7 @@ export default {
             const year = date.getFullYear();
             const hours = date.getHours();
             const minutes = date.getMinutes();
-            return `${day}/${month}/${year} ${hours > 10 ? hours : '0' + hours}:${minutes > 10 ? minutes : '0' + minutes}`;
+            return `${day}/${month}/${year} ${hours >= 10 ? hours : '0' + hours}:${minutes >= 10 ? minutes : '0' + minutes}`;
         },
         isRead() {
             return this.email.isRead ? '' : 'mail-read';
