@@ -44,10 +44,11 @@ export default {
     },
     computed: {
         emailsToShow() {    
+             console.log(this.filter);
+             
             if (!this.filter) return this.emails;
             if (this.filter.read) return this.emails.filter(email =>{ return email.isRead &&email.subject.includes(this.filter.txt)}) 
             if (!this.filter.read) return this.emails.filter(email => {return !email.isRead && email.subject.includes(this.filter.txt)})  
-            // return this.emails.filter(email => email.subject.includes(this.filter.txt)) 
         }
     },
     methods: {
