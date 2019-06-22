@@ -10,8 +10,8 @@ export default {
                     <ul class="nav-bar clean-list flex">
                         <li><router-link exact to="/">home</router-link></li>
                         <li><router-link to="/mail">mail</router-link></li>
+                        <li><router-link to="/keep">keep</router-link></li>
                         <li><router-link to="/books">books</router-link></li>
-                        <li><router-link to="/notes">notes</router-link></li>
                         <li><router-link to="/about">about</router-link></li>
                     </ul>
                 </nav>

@@ -1,5 +1,5 @@
 
-import emailStorageService from './emailStorageService.js'
+import emailStorageService from '../../../services/storage-service.js'
 import { testData } from '../../../../data.js'
 import utilService from '../../../services/utils-service.js'
 
