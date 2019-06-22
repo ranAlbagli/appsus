@@ -11,3 +11,5 @@ export const MAIL_DELETE = 'MAIL_DELETE';
 export const KEEP_DELETE = 'KEEP_DELETE';
 
 
+export const DELETE_TODO= 'DELETE_TODO';
+export const MARK_TODO_DONE = 'MARK_TODO_DONE';
