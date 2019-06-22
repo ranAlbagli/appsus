@@ -1,19 +1,19 @@
 export const notesTestData = [
     {
-        _id: '34ergtfdhgs54',
+        _id: '111134ergtfdhgs54',
         settings: {
             type: 'note-text',
             isPinned: false,
             isMarked: false,
             editMode: false
         },
-        bgColor: '#fff',
+        bgColor: 'red',
         data: {
             text: "This is very interesting note",
         },
     },
     {
-        _id: '34ergtfdfhs54',
+        _id: '222234ergtfdfhs54',
         settings: {
             type: 'note-img',
             isPinned: false,
@@ -26,7 +26,7 @@ export const notesTestData = [
         },
     },
     {
-        _id: '34erfgtfdhs54',
+        _id: '333334erfgtfdhs54',
         settings: {
             type: 'note-todo',
             isPinned: false,
