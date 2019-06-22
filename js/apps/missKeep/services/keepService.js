@@ -13,9 +13,25 @@ function query() {
     return Promise.resolve(gKeeps);
 }
 
+function deleteKeepById(keepId) {
+    console.log('hererererererererere');
+    
+    const keepIdx = getKeepIdx(keepId);
+    gKeeps.splice(keepIdx, 1);
+    keepStorageService.store(KEEP_KEY, gKeeps);
+    return Promise.resolve(console.log(`${keepId} removed`))
+  }
+
+  function getKeepIdx(keepId) {
+    return gKeeps.findIndex(keep => keep._id === keepId);
+  }
 
 
 
 export const keepService ={
-    query
+    query,
+    deleteKeepById,
+    getKeepIdx
+
+    
 }
