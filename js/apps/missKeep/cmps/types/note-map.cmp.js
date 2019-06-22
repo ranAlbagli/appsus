@@ -1,3 +1,3 @@
 export default {
-    template: `<h1>cmp</h1>`
+    template: `<h1>map-cmp</h1>`
 }

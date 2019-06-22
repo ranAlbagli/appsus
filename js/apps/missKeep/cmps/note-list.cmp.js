@@ -9,16 +9,15 @@ import noteImg from './types/note-img.cmp.js';
 
 export default {
     template: `
-    <section >
-        <div v-for="(keep,idx) in keeps">
-            <component :is="keep.settings.type"></component>
-        </div>
-    </section>
-    `,
-      
+        <section >
+            <div v-for="(keep,idx) in keeps">
+                <component :is="keep.settings.type"></component>
+            </div>
+        </section>
+        `,
     props: ['keeps'],
     created(){
-        console.log(this.keeps);
+        // console.log(this.keeps);
         
     },
     components: {
