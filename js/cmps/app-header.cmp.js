@@ -3,7 +3,7 @@ export default {
                 <div class="flex align-center">
                     <div class="logo">appsus</div>
                     <div class="search">
-                        <input class="search-input" type="search" name="" id="" placeholder="Search emails">
+                        <input class="search-input" type="search" name="" id="" placeholder=" Search emails">
                     </div>
                 </div>
                 <nav class="appsus-nav">
