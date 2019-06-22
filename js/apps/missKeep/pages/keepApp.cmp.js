@@ -17,7 +17,7 @@ export default {
     created() {
         keepService.query().then((res) => {
             this.keepsToShow = res;
-            console.log(this.keeps);
+            // console.log(this.keeps);
             
         })
     },
