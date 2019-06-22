@@ -2,6 +2,8 @@ import { keepService } from '../services/keepService.js';
 import noteAdd from '../cmps/note-add.cmp.js';
 import noteList from '../cmps/note-list.cmp.js';
 
+import { bus,  KEEP_DELETE} from '../../../services/eventBus-service.js'
+
 
 export default {
     template: `
@@ -17,9 +19,18 @@ export default {
     created() {
         keepService.query().then((res) => {
             this.keepsToShow = res;
-            // console.log(this.keeps);
             
         })
+
+        bus.$on(KEEP_DELETE, (keepId) => {
+            this.deleteKeep(keepId);
+        })
+    },
+
+    methods:{
+        deleteKeep(keepId) {     
+            keepService.deleteKeepById(keepId)
+        },
     },
     components:{
         noteAdd,
