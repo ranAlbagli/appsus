@@ -1,4 +1,3 @@
-
 .email-row {
     padding-top: 5px;
     padding-bottom: 5px;
@@ -20,50 +19,60 @@
 }
 
 .email-star {
-    flex-grow: 0.9;
+    width: 2%;
 }
-
+.mail-favorite{
+    color: #e4c065;
+}
 .email-star button {
     border: none;
     cursor: pointer;
-    color: #e4c065;
+    color: #b3b3b3;
     outline: none;
     background-color: rgba(0, 0, 0, 0.0);
 }
 
 .email-sender-pic {
-    flex-grow: 1;
+    /* flex-grow: 1; */
+    width: 5%;
 }
 
 .email-sender-name {
-    flex-grow: 1;
+    /* flex-grow: 1; */
+    width: 5%;
 }
 
 .email-preview {
-    flex-grow: 26;
+    /* flex-grow: 26; */
+    width: 76%;
     color: #b3b3b3;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .email-preview span {
     color: #323c47;
     text-transform: capitalize;
-
 }
-.email-date{
-    flex-grow: 1;
-    color:#b3b3b3;
+
+.email-date {
+    /* flex-grow: 1; */
+    width: 10%;
+    color: #b3b3b3;
+    text-align: right;
 }
 
 .email-options {
-    flex-grow: 0.0;
+    width:4%;
 }
 
 .email-options button {
     border: none;
     cursor: pointer;
-    outline:none;
+    outline: none;
     background-color: rgba(0, 0, 0, 0.0);
 }
-.mail-read{
+
+.mail-read {
     background-color: #f1f4f4;
 }

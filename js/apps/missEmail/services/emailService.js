@@ -26,9 +26,9 @@ function howManyEmailsUnread(emails) {
 }
 
 function addEmail(email) {
-  const newEmail= createEmail(email)
+  const newEmail = createEmail(email)
   console.log(newEmail);
-  
+
   gEmails.unshift(newEmail)
   emailStorageService.store(EMAILS_KEY, gEmails)
 
@@ -45,18 +45,24 @@ function deleteEmailById(emailId) {
   emailStorageService.store(EMAILS_KEY, gEmails);
   return Promise.resolve(console.log(`${emailId} removed`))
 }
-function setReadUnread(emailId) { 
+function toggleRead(emailId) {
   const emailIdx = getEmailIdx(emailId);
-  gEmails[emailIdx].isRead= !gEmails[emailIdx].isRead
+  gEmails[emailIdx].isRead = !gEmails[emailIdx].isRead
+  emailStorageService.store(EMAILS_KEY, gEmails);
+  return Promise.resolve()
+}
+function toggleFavorite(emailId){
+  const emailIdx = getEmailIdx(emailId);
+  gEmails[emailIdx].isFavorite = !gEmails[emailIdx].isFavorite;
   emailStorageService.store(EMAILS_KEY, gEmails);
   return Promise.resolve()
 }
 
-function getEmailIdx(emailId) {  
-  return gEmails.findIndex( email => email._id === emailId );
+function getEmailIdx(emailId) {
+  return gEmails.findIndex(email => email._id === emailId);
 }
 
-function createEmail(email){
+function createEmail(email) {
 
   return {
     "_id": utilService.makeId(24),
@@ -64,7 +70,7 @@ function createEmail(email){
     "body": email.body,
     "isRead": false,
     "sentAt": Date.now()
-   
+
   }
 }
 export const emailService = {
@@ -73,6 +79,7 @@ export const emailService = {
   addEmail,
   findEmailById,
   deleteEmailById,
-  setReadUnread,
-  createEmail
+  toggleRead,
+  createEmail,
+  toggleFavorite
 }

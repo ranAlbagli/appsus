@@ -92,6 +92,9 @@ export default {
             console.log(emailId)
             this.deleteEmail(emailId);
         })
+        bus.$on('setFavorite',(emailId)=>{
+            this.setFavorite(emailId);
+        })
     },
     computed: {
         emailsToShow() {
@@ -101,19 +104,6 @@ export default {
             if (this.filter.read) return this.emails.filter(email => { return email.isRead && email.subject.includes(this.filter.txt) })
             if (!this.filter.read) return this.emails.filter(email => { return !email.isRead && email.subject.includes(this.filter.txt) })
         },
-
-
-
-
-        // emailsToShow() {
-        //     let emailsArr = this.emails;
-        //     let filteredBooks = emailsArr.filter((email) => {
-        //         return ((email.subject.indexOf(this.filter.txt) !== -1 || this.filter.txt === '') &&
-        //             (email.isRead) )
-
-        //     })
-        //     return filteredBooks;
-        // }
     },
     methods: {
         setFilter(filter) {
@@ -121,21 +111,23 @@ export default {
         },
         sendEmail(email) {
             console.log('adding ', email);
-
             emailService.addEmail(email)
         },
         toggleReadStatus(emailId) {
-            emailService.setReadUnread(emailId)
+            emailService.toggleRead(emailId)
                 .then(() => {
                     console.log('toggle from bus');
                 });
-
         },
         deleteEmail(emailId) {
-
             emailService.deleteEmailById(emailId)
-
-
+        },
+        setFavorite(emailId){
+            console.log("setting favorite")
+            emailService.toggleFavorite(emailId)
+                .then(() => {
+                    console.log('toggle from bus');
+                });
         }
     },
 

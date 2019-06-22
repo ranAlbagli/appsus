@@ -2,9 +2,9 @@ export default {
     template: `<header class="dynamic-header flex align-center space-between">
                 <div class="flex align-center">
                     <div class="logo">appsus</div>
-                    <div class="search">
+                    <!-- <div class="search">
                         <input class="search-input" type="search" name="" id="" placeholder="Search emails">
-                    </div>
+                    </div> -->
                 </div>
                 <nav class="appsus-nav">
                     <ul class="nav-bar clean-list flex">
