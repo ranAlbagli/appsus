@@ -59,7 +59,7 @@ export const notesTestData = [
             isMarked: false,
             editMode: false
         },
-        bgColor: '#fff',
+        bgColor: '#aaaaaa',
         data: {
             todos: [
                 { text: 'Wash my car', completed: false },
