@@ -17,7 +17,7 @@ export default {
         `,
     props: ['keeps'],
     created(){
-        // console.log(this.keeps);
+       
         
     },
     components: {
