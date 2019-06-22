@@ -1,4 +1,6 @@
-import { bus } from '../../../services/eventBus-service.js'
+import { bus, MAIL_DELETE, MAIL_MARK_FAVORITE, MAIL_MARK_READ } from '../../../services/eventBus-service.js'
+
+
 
 
 export default {
@@ -23,13 +25,13 @@ export default {
     props: ['email'],
     methods: {
         emitEmailRead() {
-            bus.$emit('setread', this.email._id);
+            bus.$emit(MAIL_MARK_READ, this.email._id);
         },
         emitEmailDelete() {
-            bus.$emit('delete', this.email._id);
+            bus.$emit(MAIL_DELETE, this.email._id);
         },
         emitEmailFavorite() {
-            bus.$emit('setFavorite', this.email._id);
+            bus.$emit(MAIL_MARK_FAVORITE, this.email._id);
         }
     },
     computed: {
@@ -48,9 +50,9 @@ export default {
         btnText() {
             return this.email.isRead ? 'fas fa-envelope-open-text' : 'fas fa-envelope'
         },
-        isFavorite(){
+        isFavorite() {
             console.log(this.email.isFavorite);
-            return this.email.isFavorite? 'mail-favorite':'';
+            return this.email.isFavorite ? 'mail-favorite' : '';
         }
     },
     created() {

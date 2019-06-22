@@ -1,8 +1,8 @@
 export const notesTestData = [
     {
         _id: '34ergtfdhgs54',
-        setting: {
-            type: 'text',
+        settings: {
+            type: 'note-text',
             isPinned: false,
             isMarked: false,
             editMode: false
@@ -14,8 +14,8 @@ export const notesTestData = [
     },
     {
         _id: '34ergtfdfhs54',
-        setting: {
-            type: 'image',
+        settings: {
+            type: 'note-img',
             isPinned: false,
             isMarked: false,
             editMode: false
@@ -27,8 +27,8 @@ export const notesTestData = [
     },
     {
         _id: '34erfgtfdhs54',
-        setting: {
-            type: 'todo',
+        settings: {
+            type: 'note-todo',
             isPinned: false,
             isMarked: false,
             editMode: false

@@ -5,7 +5,7 @@ import emailFilter from '../cmps/email-filter.cmp.js'
 import emailStatus from '../cmps/email-status.cmp.js'
 import emailCompose from '../cmps/email-compose-cmp.js'
 
-import { bus } from '../../../services/eventBus-service.js'
+import { bus, MAIL_MARK_READ, MAIL_DELETE,MAIL_MARK_FAVORITE } from '../../../services/eventBus-service.js'
 
 export default {
     template: `
@@ -83,16 +83,16 @@ export default {
                 this.emails = res;
                 console.log(res);
             })
-        bus.$on('setread', (emailId) => {
+        bus.$on(MAIL_MARK_READ, (emailId) => {
             console.log(emailId)
             this.toggleReadStatus(emailId);
         })
 
-        bus.$on('delete', (emailId) => {
+        bus.$on(MAIL_DELETE, (emailId) => {
             console.log(emailId)
             this.deleteEmail(emailId);
         })
-        bus.$on('setFavorite',(emailId)=>{
+        bus.$on(MAIL_MARK_FAVORITE,(emailId)=>{
             this.setFavorite(emailId);
         })
     },
@@ -123,7 +123,6 @@ export default {
             emailService.deleteEmailById(emailId)
         },
         setFavorite(emailId){
-            console.log("setting favorite")
             emailService.toggleFavorite(emailId)
                 .then(() => {
                     console.log('toggle from bus');
