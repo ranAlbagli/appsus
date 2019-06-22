@@ -11,7 +11,7 @@ export default {
     template: `
         <section >
             <div v-for="(keep,idx) in keeps">
-                <component :is="keep.settings.type"></component>
+                <component :is="keep.settings.type" :keep="keep"></component>
             </div>
         </section>
         `,
