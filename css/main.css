@@ -8,6 +8,8 @@
 @import 'email-compose-cmp.css';
 @import 'keep-todo-cmp.css';
 @import 'note-container.css';
+@import 'responsive-video.css';
+
 /* Font-face */
 
 @font-face {
@@ -65,8 +67,12 @@ body, h1, h2, h3, h4, h5, h6, p {
 }
 
 .masonry {
-  margin: 0 auto 2em;
-  column-gap: 1.5em;
+  /* margin: 0 auto 2em;
+  column-gap: 1.5em; */
+  display: flex;
+  flex-direction: column;
+  /* flex-wrap: wrap; */
+  height: 100vh;
 }
 
 /* Helpers */

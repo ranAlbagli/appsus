@@ -23,7 +23,7 @@ export const notesTestData = [
         bgColor: '#fff',
         data: {
             // src: 'https://clips.vorwaerts-gmbh.de/VfE_html5.mp4',
-            src: 'https://www.youtube.com/watch?v=qjtMs7jQxEo',
+            src: '3urRWGt2s6k',
         },
     },
     {
@@ -93,7 +93,8 @@ export const notesTestData = [
         },
         bgColor: '#fff',
         data: {
-            src: 'https://clips.vorwaerts-gmbh.de/VfE_html5.mp4',
+            // src: 'https://clips.vorwaerts-gmbh.de/VfE_html5.mp4',
+            src: '3urRWGt2s6k',
         },
     },
     {
