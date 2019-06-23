@@ -4,7 +4,7 @@ import { keepService } from '../services/keepService.js';
 export default {
 	props: ['noteTypes'],
 	template: `
-		<section class="notes-add flex space-between">
+		<section class="notes-add flex ">
 
 			<input :type="fieldType" autocomplete="off" v-model="userData"
 				:placeholder="placeholder" @keyup.enter="addNote" ref="newNoteEl" />

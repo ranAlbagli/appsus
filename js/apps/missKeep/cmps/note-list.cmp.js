@@ -7,6 +7,7 @@ import noteImg from './types/note-img.cmp.js';
 
 
 
+
 export default {
     template: `
         <section class="masonry container" >
@@ -15,10 +16,11 @@ export default {
                 :key="idx"
                 :is="keep.settings.type" 
                 :keep="keep" 
+                :noteTypesInfo="noteTypes[keep.settings.type]"
                 class="note ui-box"></component>
         </section>
         `,
-    props: ['keeps'],
+    props: ['keeps','noteTypes'],
     created(){
        
         

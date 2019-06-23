@@ -14,10 +14,10 @@ export default {
                     {{todo.text}}
 				</li>
 			</ul>
-            <note-action-bar :keep="keep" ></note-action-bar>
+            <note-action-bar :keep="keep"  :noteTypesInfo="noteTypesInfo" ></note-action-bar>
 		</section>
     `,
-    props: ['keep'],
+    props: ['keep','noteTypesInfo'],
     methods: {
         markDone(keepId, todoIdx) {
             bus.$emit(MARK_TODO_DONE, idx);

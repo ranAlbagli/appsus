@@ -1,6 +1,7 @@
 import { keepService } from '../services/keepService.js';
 import noteAdd from '../cmps/note-add.cmp.js';
 import noteList from '../cmps/note-list.cmp.js';
+import noteFilter from '../cmps/note-filter.cmp.js';
 
 import { bus,  KEEP_DELETE,MARK_TODO_DONE,DELETE_TODO,
          KEEP_PINNED,KEEP_MARKED,KEEP_STYLED,KEEP_ADDED
@@ -10,8 +11,9 @@ import { bus,  KEEP_DELETE,MARK_TODO_DONE,DELETE_TODO,
 export default {
     template: `
         <section>
+            <note-filter @keep-filter="setFilter"></note-filter>
             <note-add  :noteTypes="noteTypes"></note-add>
-            <note-list v-if="keepsToShow" :keeps="keepsToShow" class="flex wrap"></note-list>
+            <note-list v-if="keepsToShow" :keeps="keepsToShow" :noteTypes="noteTypes" class="flex wrap"></note-list>
         </section>`,
     data() {
         return {
@@ -22,12 +24,13 @@ export default {
 				'note-audio': { field: 'url', icon: 'fas fa-volume-up', placeholder: 'Enter audio URL...' },
 				'note-todo': { field: 'text', icon: 'fas fa-list', placeholder: 'Enter comma separated list...' },
 			},
-            keepsToShow: [],
+            keeps:[],
+            filter: '',
         }
     },
     created() {
         keepService.query().then((res) => {
-            this.keepsToShow = res;  
+            this.keeps = res;  
         })
         bus.$on(KEEP_DELETE, (keepId) => {
             this.deleteKeep(keepId);
@@ -78,11 +81,48 @@ export default {
         },
         addKeep(keep, data) {
 			keepService.saveKeep(keep, data);
-		},
+        },
+        
+        setFilter(filter) {
+            this.filter = filter
+        },
  
     },
+
+    computed: {
+		keepsToShow() {
+            let keeps = this.keeps;
+			if (this.filter && this.filter.type !== '') {
+				keeps = keeps.filter(keep => this.filter.type === keep.settings.type)
+			}
+
+			if (this.filter && this.filter.txt) {
+				let searchTerm = this.filter.txt.toLowerCase()
+				keeps = keeps.filter(keep => {
+					let strValue = '';
+					switch (keep.settings.type) {
+						case 'note-text':
+							strValue = keep.data.text;
+							break;
+						case 'note-img':
+						case 'note-video':
+						case 'note-audio':
+							strValue = keep.data.src;
+							break;
+						case 'note-todo':
+							strValue = keep.data.todos.map(todo => todo.text).join(',');
+							break;
+					}
+					return strValue.includes(searchTerm);
+				})
+			}
+
+			return keeps;
+		}
+	},
     components:{
         noteAdd,
-        noteList
+        noteList,
+        noteFilter
     }
 }

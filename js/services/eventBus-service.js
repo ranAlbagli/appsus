@@ -15,6 +15,8 @@ export const KEEP_STYLED = 'KEEP_STYLED';
 export const KEEP_EDIT = 'KEEP_EDIT';
 
 export const KEEP_ADDED = 'KEEP_ADDED';
+export const KEEPS_FILTERED = 'KEEPS_FILTERED';
+
 
 
 
