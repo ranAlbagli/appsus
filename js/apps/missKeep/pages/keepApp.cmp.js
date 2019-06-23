@@ -3,18 +3,25 @@ import noteAdd from '../cmps/note-add.cmp.js';
 import noteList from '../cmps/note-list.cmp.js';
 
 import { bus,  KEEP_DELETE,MARK_TODO_DONE,DELETE_TODO,
-         KEEP_PINNED,KEEP_MARKED,KEEP_STYLED,KEEP_EDIT
+         KEEP_PINNED,KEEP_MARKED,KEEP_STYLED
         } from '../../../services/eventBus-service.js';
 
 
 export default {
     template: `
         <section>
-            <note-add></note-add>
+            <note-add  :noteTypes="noteTypes"></note-add>
             <note-list v-if="keepsToShow" :keeps="keepsToShow" class="flex wrap"></note-list>
         </section>`,
     data() {
         return {
+            noteTypes: {
+				'note-text': { field: 'text', icon: 'fas fa-font', placeholder: 'What’s on your mind...' },
+				'note-img': { field: 'url', icon: 'far fa-image', placeholder: 'Enter image URL...' },
+				'note-video': { field: 'url', icon: 'fab fa-youtube', placeholder: 'Enter video URL...' },
+				'note-audio': { field: 'url', icon: 'fas fa-volume-up', placeholder: 'Enter audio URL...' },
+				'note-todo': { field: 'text', icon: 'fas fa-list', placeholder: 'Enter comma separated list...' },
+			},
             keepsToShow: [],
         }
     },
@@ -37,7 +44,7 @@ export default {
         
         bus.$on(KEEP_STYLED, (noteId, bgColor) => this.styleKeep(noteId, bgColor));
         
-        bus.$on(KEEP_EDIT, noteId => this.editKeep(noteId));
+        // bus.$on(KEEP_EDIT, noteId => this.editKeep(noteId));
            
     },
 

@@ -38,6 +38,19 @@ function styleKeep(id, bgColor) {
     });
 }
 
+function emptyKeep() {
+	return {
+		settings: {
+			type: 'note-text',
+			isPinned: false,
+			isMarked: false,
+			editMode: false,
+        },
+        bgColor:'',
+		data: {},
+	};
+}
+
 
 function deleteTodoByIdx(keepId, idx) { }
 
@@ -52,5 +65,6 @@ export const keepService = {
   markDoneTodoByIdx,
   deleteTodoByIdx,
   deleteKeepById,
-  styleKeep
+  styleKeep,
+  emptyKeep
 }

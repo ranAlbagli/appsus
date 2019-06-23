@@ -29,7 +29,7 @@ export const notesTestData = [
     {
         _id: '222234ergtfdfs54',
         settings: {
-            type: 'note-img',
+            type: 'note-text',
             isPinned: false,
             isMarked: false,
             editMode: false
