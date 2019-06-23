@@ -5,21 +5,10 @@ import emailFilter from '../cmps/email-filter.cmp.js'
 import emailStatus from '../cmps/email-status.cmp.js'
 import emailCompose from '../cmps/email-compose-cmp.js'
 
-import { bus, MAIL_MARK_READ, MAIL_DELETE,MAIL_MARK_FAVORITE } from '../../../services/eventBus-service.js'
+import { bus, MAIL_MARK_READ, MAIL_DELETE, MAIL_MARK_FAVORITE } from '../../../services/eventBus-service.js'
 
 export default {
     template: `
-     <!-- <section class="email-app" v-if="emails">
-            <div class="emails-side-bar">
-            <email-status :emails="emails"></email-status>
-            <button  class="compose-btn" @click="showModal = true"><img src="https://www.gstatic.com/images/icons/material/colored_icons/1x/create_32dp.png" alt=""/><p>Compose</p></button>
-            <email-compose v-if="showModal" @close="showModal = false" @new-email="sendEmail" ></email-compose>  
-            </div>
-            <div>
-                <email-filter @set-filter="setFilter"></email-filter> 
-                <email-list :emails="emailsToShow"></email-list>
-            </div>
-     </section> -->
      <main class="flex">
      <button  class="compose-btn" @click="showModal = true"><i class="fas fa-pen"></i></button>
      <email-compose v-if="showModal" @close="showModal = false" @new-email="sendEmail" ></email-compose>
@@ -45,21 +34,21 @@ export default {
                     <i class="fas fa-comments"></i>
                     <div class="text">
                         <p class="property">overall messages</p>
-                        <p class="count">2389</p>
+                        <p class="count">{{this.emailTotalCount}}</p>
                     </div>
                 </div>
                 <div class="email-stats-data-box flex align-center justify-left">
                     <i class="fas fa-inbox"></i>
                     <div class="text">
                         <p class="property">unread messages</p>
-                        <p class="count">2389</p>
+                        <p class="count">{{emailsUnreadCount}}</p>
                     </div>
                 </div>
                 <div class="email-stats-data-box flex align-center justify-left">
                     <i class="fas fa-glasses"></i>
                     <div class="text">
                         <p class="property">read messages</p>
-                        <p class="count">2389</p>
+                        <p class="count">{{emailReadCount}}</p>
                     </div>
                 </div>
             </div>
@@ -92,7 +81,7 @@ export default {
             console.log(emailId)
             this.deleteEmail(emailId);
         })
-        bus.$on(MAIL_MARK_FAVORITE,(emailId)=>{
+        bus.$on(MAIL_MARK_FAVORITE, (emailId) => {
             this.setFavorite(emailId);
         })
     },
@@ -104,6 +93,19 @@ export default {
             if (this.filter.read) return this.emails.filter(email => { return email.isRead && email.subject.includes(this.filter.txt) })
             if (!this.filter.read) return this.emails.filter(email => { return !email.isRead && email.subject.includes(this.filter.txt) })
         },
+        emailsUnreadCount() {
+            return this.emailTotalCount - this.emailReadCount;
+        },
+        emailTotalCount() {
+            return this.emails.length;
+        },
+        emailReadCount() {
+            return this.emails.reduce((accumulator, email) => {
+                if (email.isRead) accumulator++;
+                return accumulator;
+            }, 0)
+            console.log("read emails count", emailReadCount.length)
+        },
     },
     methods: {
         setFilter(filter) {
@@ -111,7 +113,12 @@ export default {
         },
         sendEmail(email) {
             console.log('adding ', email);
-            emailService.addEmail(email)
+            emailService.addEmail(email);
+            emailService.query()
+                .then((res) => {
+                    this.emails = res;
+                    console.log(res);
+                })
         },
         toggleReadStatus(emailId) {
             emailService.toggleRead(emailId)
@@ -122,7 +129,7 @@ export default {
         deleteEmail(emailId) {
             emailService.deleteEmailById(emailId)
         },
-        setFavorite(emailId){
+        setFavorite(emailId) {
             emailService.toggleFavorite(emailId)
                 .then(() => {
                     console.log('toggle from bus');

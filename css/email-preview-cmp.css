@@ -4,11 +4,15 @@
     padding-right: 10px;
     padding-left: 10px;
     transition: .3s;
+    background-color: #f1f4f4;
+    font-family: 'Lato-light';
 }
 
 .email-row:hover {
     padding-top: 10px;
     padding-bottom: 10px;
+    /* transform: scale(1.025); */
+    /* border:1px solid orange; */
 }
 
 .email-row img {
@@ -21,9 +25,11 @@
 .email-star {
     width: 2%;
 }
-.mail-favorite{
+
+.mail-favorite {
     color: #e4c065;
 }
+
 .email-star button {
     border: none;
     cursor: pointer;
@@ -39,15 +45,22 @@
 
 .email-sender-name {
     /* flex-grow: 1; */
-    width: 5%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-overflow: "...";
+    width: 10%;
 }
 
 .email-preview {
     /* flex-grow: 26; */
-    width: 70%;
+    width: 50%;
     color: #b3b3b3;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
+    /* width: 50px; */
+    overflow: hidden;
+    text-overflow: "...";
 }
 
 .email-preview span {
@@ -63,7 +76,7 @@
 }
 
 .email-options {
-    width:5%;
+    width: 5%;
 }
 
 .email-options button {
@@ -73,6 +86,7 @@
     background-color: rgba(0, 0, 0, 0.0);
 }
 
-.mail-read {
-    background-color: #f1f4f4;
+.new-mail {
+    font-family: 'Lato-black';
+    background-color: #ffffff;
 }

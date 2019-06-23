@@ -16,6 +16,14 @@
   font-family: 'Lato-regular';
   src: url('../fonts/lato/Lato-Regular.ttf');
 }
+@font-face {
+  font-family: 'Lato-black';
+  src: url('../fonts/lato/Lato-Bold.ttf');
+}
+@font-face {
+  font-family: 'Lato-light';
+  src: url('../fonts/lato/Lato-Light.ttf');
+}
 
 /* Base */
 

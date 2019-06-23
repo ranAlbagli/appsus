@@ -6,10 +6,10 @@ import { bus, MAIL_DELETE, MAIL_MARK_FAVORITE, MAIL_MARK_READ } from '../../../s
 export default {
     template: `
         <div class="email-row flex align-center space-between" :class="isRead">
-                    <div class="email-star"><button @click="emitEmailFavorite" ><i class="fas fa-star" :class="isFavorite"></i></button></div>
-                    <div class="email-sender-pic"><img src="21.jpg" alt=""></div>
-                    <div class="email-sender-name">Danny</div>
-                    <div class="email-preview"><span>{{this.email.subject}}</span>{{this.email.body.substring(0, 90)}}</div>
+                    <div class="email-star"><button @click="emitEmailFavorite"><i :class="isFavorite" class="fas fa-star" ></i></button></div>
+                    <div class="email-sender-pic"><img :src="avatar" alt=""></div>
+                    <div class="email-sender-name">{{this.email.from}}</div>
+                    <div class="email-preview"><span>{{this.email.subject}}</span>  {{this.email.body.substring(0, 90)}}</div>
                     <div class="email-date">{{formatDate}}</div>
                     <div class="email-options">
                         <button @click="emitEmailRead"><i :class="btnText"></i></button>
@@ -45,14 +45,17 @@ export default {
             return `${day}/${month}/${year} ${hours >= 10 ? hours : '0' + hours}:${minutes >= 10 ? minutes : '0' + minutes}`;
         },
         isRead() {
-            return this.email.isRead ? 'mail-read' : '';
+            return this.email.isRead ? '' : 'new-mail';
         },
         btnText() {
             return this.email.isRead ? 'fas fa-envelope-open-text' : 'fas fa-envelope'
         },
         isFavorite() {
-            console.log(this.email.isFavorite);
+            console.log("is favorite is", this.email.isFavorite);
             return this.email.isFavorite ? 'mail-favorite' : '';
+        },
+        avatar() {
+            return `https://api.adorable.io/avatars/285/${this.email.from}.png`
         }
     },
     created() {

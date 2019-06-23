@@ -47,6 +47,7 @@ export default {
                   subject : '',
                   body : '',
                   isRead: false,
+                  isFavorite:false,
                   sentAt: new Date()
               }
         }
@@ -65,8 +66,8 @@ export default {
                 subject : '',
                 body : '',
                 isRead: false,
+                isFavorite:false,
                 sentAt: new Date()
-
             }              
         }
     },
