@@ -9,7 +9,7 @@ export default {
     template: `
         <section>
             <note-add></note-add>
-            <note-list v-if="keepsToShow" :keeps="keepsToShow"></note-list>
+            <note-list v-if="keepsToShow" :keeps="keepsToShow" class="flex wrap"></note-list>
         </section>`,
     data() {
         return {

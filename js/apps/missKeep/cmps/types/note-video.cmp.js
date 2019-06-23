@@ -6,7 +6,7 @@ export default {
 		<section 
 			:style="{'background-color': keep.bgColor }">
             <p>{{keep.data.text}}</p>
-			<video :src="keep.data.src" controls ></video>
+			<video :src="keep.data.src" controls width="100%"></video>
             <button @click="emitKeepDelete"><i class="fas fa-trash"></i></button>
 		</section>
 	`,

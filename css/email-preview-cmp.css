@@ -44,7 +44,7 @@
 
 .email-preview {
     /* flex-grow: 26; */
-    width: 76%;
+    width: 70%;
     color: #b3b3b3;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -57,13 +57,13 @@
 
 .email-date {
     /* flex-grow: 1; */
-    width: 10%;
+    width: 15%;
     color: #b3b3b3;
     text-align: right;
 }
 
 .email-options {
-    width:4%;
+    width:5%;
 }
 
 .email-options button {

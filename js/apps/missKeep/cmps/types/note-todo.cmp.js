@@ -3,11 +3,11 @@ import { bus, DELETE_TODO, MARK_TODO_DONE } from '../../../../services/eventBus-
 
 export default {
     template: `
-        <section class="todo ui-box"
+        <section
 			:style="{'background-color': keep.bgColor}">
 			<ul>
                 <li  v-for="(todo, idx) in keep.data.todos"
-                    class="todo"
+                    class="todo clean-list"
                     :class="isDone(todo)"
                     :key="idx"
                     @click="markDone(this.keep._id,idx)">
