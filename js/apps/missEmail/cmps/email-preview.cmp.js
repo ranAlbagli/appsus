@@ -51,7 +51,6 @@ export default {
             return this.email.isRead ? 'fas fa-envelope-open-text' : 'fas fa-envelope'
         },
         isFavorite() {
-            console.log("is favorite is", this.email.isFavorite);
             return this.email.isFavorite ? 'mail-favorite' : '';
         },
         avatar() {

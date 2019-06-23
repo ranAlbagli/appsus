@@ -22,10 +22,13 @@ export default {
                 </div>
                 <nav class="mails-aside-nav">
                     <ul class="clean-list">
-                        <li><a class="active" href="#">inbox</a></li>
+                        <li><a class="active" href="#">inbox ({{emailsUnreadCount}})</a></li>
                         <li><a href="#">Deleted</a></li>
                         <li>
-                            <email-status :emails="emails"></email-status>
+                            <email-status 
+                            :totalCount="emailTotalCount"
+                            :readCount="emailReadCount">
+                        </email-status>
                         </li>
                     </ul>
                 </nav>
@@ -74,15 +77,12 @@ export default {
         emailService.query()
             .then((res) => {
                 this.emails = res;
-                console.log(res);
             })
         bus.$on(MAIL_MARK_READ, (emailId) => {
-            console.log(emailId)
             this.toggleReadStatus(emailId);
         })
 
         bus.$on(MAIL_DELETE, (emailId) => {
-            console.log(emailId)
             this.deleteEmail(emailId);
         })
         bus.$on(MAIL_MARK_FAVORITE, (emailId) => {
@@ -95,7 +95,6 @@ export default {
             let filteredEmails = emailsArr.filter((email) => {
                 return ((email.subject.indexOf(this.filterBy.txt) !== -1 || this.filterBy.txt === false) &&
                     (email.isRead === this.filterBy.read || this.filterBy.read === false) &&
-                    // (this.filterBy.all || this.filterBy.read === false) &&
                     (email.isRead === !this.filterBy.unread || this.filterBy.unread === false) &&
                     (email.isFavorite === this.filterBy.favorite || this.filterBy.favorite === false)
                 )
@@ -114,7 +113,6 @@ export default {
                 if (email.isRead) accumulator++;
                 return accumulator;
             }, 0)
-            console.log("read emails count", emailReadCount.length)
         },
     },
     methods: {
@@ -122,28 +120,22 @@ export default {
             this.filterBy = filter
         },
         sendEmail(email) {
-            console.log('adding ', email);
             emailService.addEmail(email);
             emailService.query()
                 .then((res) => {
                     this.emails = res;
-                    console.log(res);
                 })
         },
         toggleReadStatus(emailId) {
             emailService.toggleRead(emailId)
-                .then(() => {
-                    console.log('toggle from bus');
-                });
+                .then(() => {});
         },
         deleteEmail(emailId) {
             emailService.deleteEmailById(emailId)
         },
         setFavorite(emailId) {
             emailService.toggleFavorite(emailId)
-                .then(() => {
-                    console.log('toggle from bus');
-                });
+                .then(() => {});
         }
     },
 

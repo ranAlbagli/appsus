@@ -3,20 +3,21 @@ import { emailService } from '../services/emailService.js'
 export default {
   template: `   
                <div class="progress-bar-container">
-               <div class="progress-bar" :style="{ 'width': readEmails +'%'}" >{{readEmails}}%</div>  
+               <div class="progress-bar" :style="{ 'width': progressPercent +'%'}" >{{progressPercent}}%</div>  
                </div>
   `,
-  props: ['emails'],
+  props: ['totalCount', 'readCount'],
   data() {
     return {
 
     }
   },
   computed: {
-    readEmails() {
-      console.log(this.emails.length);
+    progressPercent() {
+      const percent = (this.readCount / this.totalCount * 100).toFixed();
 
-      return (emailService.howManyEmailsUnread(this.emails) / this.emails.length * 100).toFixed();
+      //prevent NaN
+      return this.totalCount !== 0 ? percent : 0;
     }
   },
 

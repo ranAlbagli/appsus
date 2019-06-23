@@ -27,7 +27,6 @@ function howManyEmailsUnread(emails) {
 
 function addEmail(email) {
   const newEmail = createEmail(email)
-  console.log(newEmail);
   gEmails.unshift(newEmail)
   emailStorageService.store(EMAILS_KEY, gEmails)
 }
@@ -41,7 +40,7 @@ function deleteEmailById(emailId) {
   const emailIdx = getEmailIdx(emailId);
   gEmails.splice(emailIdx, 1);
   emailStorageService.store(EMAILS_KEY, gEmails);
-  return Promise.resolve(console.log(`${emailId} removed`))
+  return Promise.resolve();
 }
 function toggleRead(emailId) {
   const emailIdx = getEmailIdx(emailId);
@@ -49,8 +48,7 @@ function toggleRead(emailId) {
   emailStorageService.store(EMAILS_KEY, gEmails);
   return Promise.resolve()
 }
-function toggleFavorite(emailId){
-  console.log("emaild id fav",emailId);
+function toggleFavorite(emailId) {
   const emailIdx = getEmailIdx(emailId);
   gEmails[emailIdx].isFavorite = !gEmails[emailIdx].isFavorite;
   emailStorageService.store(EMAILS_KEY, gEmails);
@@ -68,7 +66,8 @@ function createEmail(email) {
     "subject": email.subject,
     "body": email.body,
     "isRead": false,
-    "isFavorite":false,
+    "from": email.from,
+    "isFavorite": false,
     "sentAt": Date.now()
 
   }
