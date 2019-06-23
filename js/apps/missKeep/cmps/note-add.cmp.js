@@ -36,7 +36,8 @@ export default {
 			return (this.newNote.settings.type === noteType)
 				? noteIcon + ' fa-lg selected'
 				: noteIcon + ' fa-lg';
-		},
+        },
+        
 		updateSelectedType(noteType) {
 			this.newNote.settings.type = noteType;
 			this.$refs.newNoteEl.focus();

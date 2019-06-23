@@ -3,7 +3,7 @@ import noteAdd from '../cmps/note-add.cmp.js';
 import noteList from '../cmps/note-list.cmp.js';
 
 import { bus,  KEEP_DELETE,MARK_TODO_DONE,DELETE_TODO,
-         KEEP_PINNED,KEEP_MARKED,KEEP_STYLED
+         KEEP_PINNED,KEEP_MARKED,KEEP_STYLED,KEEP_ADDED
         } from '../../../services/eventBus-service.js';
 
 
@@ -43,6 +43,8 @@ export default {
         bus.$on(KEEP_MARKED, noteId => this.markKeep(noteId));
         
         bus.$on(KEEP_STYLED, (noteId, bgColor) => this.styleKeep(noteId, bgColor));
+
+        bus.$on(KEEP_ADDED, (note, data) => this.addKeep(note, data));
         
         // bus.$on(KEEP_EDIT, noteId => this.editKeep(noteId));
            
@@ -60,7 +62,8 @@ export default {
         },
 
         addKeep(note, data) {
-			notesService.saveNote(note, data);
+
+			keepService.saveKeep(note, data);
 		},
 		pinKeep(noteId) {
 			notesService.pinNote(noteId);
@@ -72,6 +75,9 @@ export default {
             console.log('here');
             
 			keepService.styleKeep(keepId, bgColor);
+        },
+        addKeep(keep, data) {
+			keepService.saveKeep(keep, data);
 		},
  
     },
