@@ -7,14 +7,13 @@ export default {
 		<section class="notes-add flex ">
 
 			<input :type="fieldType" autocomplete="off" v-model="userData"
-				:placeholder="placeholder" @keyup.enter="addNote" ref="newNoteEl" />
+				:placeholder="placeholder" @keyup.enter="addKeep" ref="newNoteEl" />
 
 			<div class="flex">
 				<template v-for="(noteType, idx) in noteTypes">
 					<i :class="setSelectedType(idx, noteType.icon)" @click="updateSelectedType(idx)"></i> 
 				</template>
 			</div>
-
 		</section>
 	`,
 	data() {
@@ -42,7 +41,7 @@ export default {
 			this.newNote.settings.type = noteType;
 			this.$refs.newNoteEl.focus();
 		},
-		addNote() {
+		addKeep() {
 			bus.$emit(KEEP_ADDED, this.newNote, this.userData);
 			this.newNote = keepService.emptyKeep();
 			this.userData = '';

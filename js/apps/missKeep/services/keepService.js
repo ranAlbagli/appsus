@@ -61,13 +61,14 @@ function markDoneTodoByIdx(keepId, idx) { }
 
 
 function saveKeep(keep, data) {
-    // console.log('here at service');
+    console.log('here at service',keep,data);
+
 	if (!keep) Promise.reject();
 	switch (keep.settings.type) {
 		case 'note-text':
 			keep.data.text = data;
 			break;
-		case 'note-image':
+		case 'note-img':
 		case 'note-video':
 		case 'note-audio':
 			keep.data.src = data;

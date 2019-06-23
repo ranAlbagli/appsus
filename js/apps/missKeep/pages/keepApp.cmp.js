@@ -13,7 +13,7 @@ export default {
         <section>
             <note-filter @keep-filter="setFilter"></note-filter>
             <note-add  :noteTypes="noteTypes"></note-add>
-            <note-list v-if="keepsToShow" :keeps="keepsToShow" :noteTypes="noteTypes" class="flex wrap"></note-list>
+            <note-list v-if="keepsToShow" :keeps="keepsToShow" :noteTypes="noteTypes" ></note-list>
         </section>`,
     data() {
         return {
@@ -97,12 +97,12 @@ export default {
 			}
 
 			if (this.filter && this.filter.txt) {
-				let searchTerm = this.filter.txt.toLowerCase()
+                let searchTerm = this.filter.txt.toLowerCase()            
 				keeps = keeps.filter(keep => {
 					let strValue = '';
 					switch (keep.settings.type) {
 						case 'note-text':
-							strValue = keep.data.text;
+                            strValue = keep.data.text;   
 							break;
 						case 'note-img':
 						case 'note-video':
