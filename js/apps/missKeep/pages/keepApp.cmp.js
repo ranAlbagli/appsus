@@ -13,7 +13,7 @@ export default {
         <section>
             <note-filter @keep-filter="setFilter"></note-filter>
             <note-add  :noteTypes="noteTypes"></note-add>
-            <note-list v-if="keepsToShow" :keeps="keepsToShow" :noteTypes="noteTypes" ></note-list>
+            <note-list v-if="keepsToShow" :keeps="keepsToShow" :noteTypes="noteTypes"></note-list>
         </section>`,
     data() {
         return {

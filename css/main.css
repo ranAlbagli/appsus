@@ -9,17 +9,18 @@
 @import 'keep-todo-cmp.css';
 @import 'note-container.css';
 @import 'responsive-video.css';
-
 /* Font-face */
 
 @font-face {
   font-family: 'Lato-regular';
   src: url('../fonts/lato/Lato-Regular.ttf');
 }
+
 @font-face {
   font-family: 'Lato-black';
   src: url('../fonts/lato/Lato-Bold.ttf');
 }
+
 @font-face {
   font-family: 'Lato-light';
   src: url('../fonts/lato/Lato-Light.ttf');
@@ -75,12 +76,11 @@ body, h1, h2, h3, h4, h5, h6, p {
 }
 
 .masonry {
-  /* margin: 0 auto 2em;
-  column-gap: 1.5em; */
-  display: flex;
-  flex-direction: column;
-  /* flex-wrap: wrap; */
+	/* margin: 0 auto 2em; */
+  column-gap: 1.5em;
+  column-count: 4;
   height: 100vh;
+  padding: 20px;
 }
 
 /* Helpers */
@@ -126,4 +126,3 @@ body, h1, h2, h3, h4, h5, h6, p {
 .wrap {
   flex-wrap: wrap;
 }
-
