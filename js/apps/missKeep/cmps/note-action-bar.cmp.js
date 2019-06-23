@@ -1,5 +1,5 @@
 
-import { bus, KEEP_DELETE,KEEP_PINNED,KEEP_MARKED, KEEP_STYLED } from '../../../services/eventBus-service.js'
+import { bus, KEEP_DELETE,KEEP_PINNED,KEEP_MARKED, KEEP_STYLED,KEEP_EDIT } from '../../../services/eventBus-service.js'
 export default {
 	props: ['keep','noteTypesInfo'],
 	template: `
@@ -18,7 +18,7 @@ export default {
 					</template>
 				</div>
 			</i>
-			<!-- <i class="fas fa-edit" :class="{marked: keep.settings.editMode}" title="Edit note" @click="editNote"></i> -->
+			<i class="fas fa-edit" :class="{marked: keep.settings.editMode}" title="Edit note" @click="editNote"></i>
 			<i class="fas fa-trash-alt danger" title="Delete keep" @click="removeNote"></i>
 
 		</section>
@@ -44,9 +44,9 @@ export default {
 		styleKeep(newBgColor) {
 			bus.$emit(KEEP_STYLED, this.keep._id, newBgColor);
 		},
-		// editNote() {
-		// 	bus.$emit(KEEP_EDITING, this.keep._id);
-		// },
+		editNote() {
+			bus.$emit(KEEP_EDIT, this.keep._id);
+		},
 	
 		removeNote() {
 			bus.$emit(KEEP_DELETE, this.keep._id);

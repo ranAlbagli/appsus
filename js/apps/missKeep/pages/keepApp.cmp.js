@@ -4,7 +4,7 @@ import noteList from '../cmps/note-list.cmp.js';
 import noteFilter from '../cmps/note-filter.cmp.js';
 
 import { bus,  KEEP_DELETE,MARK_TODO_DONE,DELETE_TODO,
-         KEEP_PINNED,KEEP_MARKED,KEEP_STYLED,KEEP_ADDED
+         KEEP_PINNED,KEEP_MARKED,KEEP_STYLED,KEEP_ADDED ,KEEP_EDIT,KEEP_UPDATE
         } from '../../../services/eventBus-service.js';
 
 
@@ -49,7 +49,11 @@ export default {
 
         bus.$on(KEEP_ADDED, (note, data) => this.addKeep(note, data));
         
-        // bus.$on(KEEP_EDIT, noteId => this.editKeep(noteId));
+        bus.$on(KEEP_EDIT, noteId => this.editKeep(noteId));
+
+        bus.$on(KEEP_UPDATE, (note, data) => this.addKeep(note, data));
+
+        // eventBus.$on(EVENT_NOTE_EDITING, noteId => this.editNote(noteId));
            
     },
 
@@ -86,6 +90,9 @@ export default {
         setFilter(filter) {
             this.filter = filter
         },
+        editKeep(noteId) {  
+			keepService.editKeep(noteId);
+		},
  
     },
 
