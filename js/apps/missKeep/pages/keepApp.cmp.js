@@ -2,7 +2,9 @@ import { keepService } from '../services/keepService.js';
 import noteAdd from '../cmps/note-add.cmp.js';
 import noteList from '../cmps/note-list.cmp.js';
 
-import { bus,  KEEP_DELETE,MARK_TODO_DONE,DELETE_TODO} from '../../../services/eventBus-service.js';
+import { bus,  KEEP_DELETE,MARK_TODO_DONE,DELETE_TODO,
+         KEEP_PINNED,KEEP_MARKED,KEEP_STYLED,KEEP_EDIT
+        } from '../../../services/eventBus-service.js';
 
 
 export default {
@@ -18,10 +20,8 @@ export default {
     },
     created() {
         keepService.query().then((res) => {
-            this.keepsToShow = res;
-            
+            this.keepsToShow = res;  
         })
-
         bus.$on(KEEP_DELETE, (keepId) => {
             this.deleteKeep(keepId);
         })
@@ -31,6 +31,14 @@ export default {
         bus.$on(DELETE_TODO,todoIdx=>{
             this.deleteTodo(todoIdx);
         })
+        bus.$on(KEEP_PINNED, noteId => this.pinKeep(noteId));
+        
+        bus.$on(KEEP_MARKED, noteId => this.markKeep(noteId));
+        
+        bus.$on(KEEP_STYLED, (noteId, bgColor) => this.styleKeep(noteId, bgColor));
+        
+        bus.$on(KEEP_EDIT, noteId => this.editKeep(noteId));
+           
     },
 
     methods:{
@@ -42,7 +50,21 @@ export default {
         },
         markTodoDone(keepId,idx){
             keepService.deleteTodoByIdx(keepId,idx);
-        }
+        },
+
+        addKeep(note, data) {
+			notesService.saveNote(note, data);
+		},
+		pinKeep(noteId) {
+			notesService.pinNote(noteId);
+		},
+		markKeep(noteId) {
+			notesService.markNote(noteId);
+		},
+		styleKeep(noteId, bgColor) {
+			notesService.styleNote(noteId, bgColor);
+		},
+ 
     },
     components:{
         noteAdd,

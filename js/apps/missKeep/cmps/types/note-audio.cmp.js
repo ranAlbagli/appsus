@@ -1,5 +1,5 @@
 
-import { bus, KEEP_DELETE } from '../../../../services/eventBus-service.js'
+import noteActionBar  from '../note-action-bar.cmp.js'
 export default {
 
     template: `
@@ -8,7 +8,7 @@ export default {
 
             <p>{{keep.data.text}}</p>
 			<audio  controls :src="keep.data.src" style="width:100%;"></audio>
-            <button @click="emitKeepDelete"><i class="fas fa-trash"></i></button>
+            <note-action-bar :keep="keep" ></note-action-bar>
 		</section>
 	`,
     props: ['keep'],
@@ -18,8 +18,10 @@ export default {
 
     },
     methods: {
-        emitKeepDelete() {
-            bus.$emit(KEEP_DELETE, this.keep._id);
-        },
+      
     },
+    components:{
+        noteActionBar
+
+    }
 }
