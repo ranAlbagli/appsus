@@ -43,7 +43,7 @@ export default {
 		markNote() {
 			bus.$emit(KEEP_MARKED, this.keep._id);
 		},
-		styleNote(newBgColor) {
+		styleKeep(newBgColor) {
 			bus.$emit(KEEP_STYLED, this.keep._id, newBgColor);
 		},
 		editNote() {

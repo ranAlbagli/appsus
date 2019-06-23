@@ -14,8 +14,6 @@ function query() {
 }
 
 function deleteKeepById(keepId) {
-  console.log('hererererererererere');
-
   const keepIdx = getKeepIdx(keepId);
   gKeeps.splice(keepIdx, 1);
   keepStorageService.store(KEEP_KEY, gKeeps);
@@ -24,6 +22,20 @@ function deleteKeepById(keepId) {
 
 function getKeepIdx(keepId) {
   return gKeeps.findIndex(keep => keep._id === keepId);
+}
+
+function getKeepById(id) {
+	let keep = gKeeps.find(keep=> keep._id === id);
+	return Promise.resolve(keep);
+}
+
+
+function styleKeep(id, bgColor) {
+    return getKeepById(id)
+    .then(keep => {
+        keep.bgColor = bgColor;
+        keepStorageService.store(KEEP_KEY, gKeeps);
+    });
 }
 
 
@@ -39,5 +51,6 @@ export const keepService = {
   getKeepIdx,
   markDoneTodoByIdx,
   deleteTodoByIdx,
-  deleteKeepById
+  deleteKeepById,
+  styleKeep
 }

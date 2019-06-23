@@ -61,8 +61,10 @@ export default {
 		markKeep(noteId) {
 			notesService.markNote(noteId);
 		},
-		styleKeep(noteId, bgColor) {
-			notesService.styleNote(noteId, bgColor);
+		styleKeep(keepId, bgColor) {
+            console.log('here');
+            
+			keepService.styleKeep(keepId, bgColor);
 		},
  
     },

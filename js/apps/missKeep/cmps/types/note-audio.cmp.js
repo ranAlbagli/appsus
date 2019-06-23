@@ -13,9 +13,6 @@ export default {
 	`,
     props: ['keep'],
     created() {
-
-        console.log(this.keep);
-
     },
     methods: {
       
