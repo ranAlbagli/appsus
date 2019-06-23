@@ -7,9 +7,9 @@ export default {
 
 			  <i :class="getIconClass" :title="getIconTitle"></i> 
 			  <span> &nbsp; </span>  
-			<i class="fas fa-thumbtack" :class="{pinned: keep.settings.isPinned}" title="Pin note" @click="pinNote"></i>
-			<i class="fas fa-check" :class="{marked: keep.settings.isMarked}" title="Mark note" @click="markNote"></i>
-			<i class="fas fa-palette info colors dropdown" title="Change note color">
+			<i class="fas fa-thumbtack" :class="{pinned: keep.settings.isPinned}" title="Pin keep" @click="pinKeep"></i>
+			<!-- <i class="fas fa-check" :class="{marked: keep.settings.isMarked}" title="Mark note" @click="markNote"></i> -->
+			<i class="fas fa-palette info colors dropdown" title="Change keep color">
 				<div class="dropdown-content">
 					<template v-for="color in Colors">
 						<span :style="{'background-color': color.value}"
@@ -19,7 +19,7 @@ export default {
 				</div>
 			</i>
 			<!-- <i class="fas fa-edit" :class="{marked: keep.settings.editMode}" title="Edit note" @click="editNote"></i> -->
-			<i class="fas fa-trash-alt danger" title="Delete note" @click="removeNote"></i>
+			<i class="fas fa-trash-alt danger" title="Delete keep" @click="removeNote"></i>
 
 		</section>
 	`,
@@ -32,11 +32,10 @@ export default {
 		},
     },
     created(){
-         console.log(this.keep,this.noteTypesInfo);
-         
+           
     },
 	methods: {
-		pinNote() {
+		pinKeep() { 
 			bus.$emit(KEEP_PINNED, this.keep._id);
 		},
 		markNote() {

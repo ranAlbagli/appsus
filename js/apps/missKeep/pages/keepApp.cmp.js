@@ -68,8 +68,8 @@ export default {
 
 			keepService.saveKeep(note, data);
 		},
-		pinKeep(noteId) {
-			notesService.pinNote(noteId);
+		pinKeep(noteId) {       
+			keepService.pinKeep(noteId);
 		},
 		markKeep(noteId) {
 			notesService.markNote(noteId);
