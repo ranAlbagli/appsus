@@ -24,6 +24,9 @@ export default {
                     <ul class="clean-list">
                         <li><a class="active" href="#">inbox</a></li>
                         <li><a href="#">Deleted</a></li>
+                        <li>
+                            <email-status :emails="emails"></email-status>
+                        </li>
                     </ul>
                 </nav>
         </div>
@@ -37,6 +40,7 @@ export default {
                         <p class="count">{{this.emailTotalCount}}</p>
                     </div>
                 </div>
+
                 <div class="email-stats-data-box flex align-center justify-left">
                     <i class="fas fa-inbox"></i>
                     <div class="text">
@@ -62,7 +66,7 @@ export default {
     data() {
         return {
             emails: [],
-            filter: '',
+            filterBy: '',
             showModal: false
         }
     },
@@ -87,11 +91,16 @@ export default {
     },
     computed: {
         emailsToShow() {
-            console.log(this.filter);
+            let emailsArr = this.emails;
+            let filteredEmails = emailsArr.filter((email) => {
+                return ((email.subject.indexOf(this.filterBy.txt) !== -1 || this.filterBy.txt === false) &&
+                    (email.isRead === this.filterBy.read || this.filterBy.read === false) &&
+                    (email.isRead === !this.filterBy.unread || this.filterBy.unread === false) &&
+                    (email.isFavorite === this.filterBy.favorite || this.filterBy.favorite === false)
+                )
 
-            if (!this.filter) return this.emails;
-            if (this.filter.read) return this.emails.filter(email => { return email.isRead && email.subject.includes(this.filter.txt) })
-            if (!this.filter.read) return this.emails.filter(email => { return !email.isRead && email.subject.includes(this.filter.txt) })
+            })
+            return filteredEmails;
         },
         emailsUnreadCount() {
             return this.emailTotalCount - this.emailReadCount;
@@ -109,7 +118,7 @@ export default {
     },
     methods: {
         setFilter(filter) {
-            this.filter = filter
+            this.filterBy = filter
         },
         sendEmail(email) {
             console.log('adding ', email);

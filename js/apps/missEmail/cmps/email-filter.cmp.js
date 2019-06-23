@@ -1,25 +1,14 @@
-
-
-
 export default {
     template: `
-        <!-- <section class="emails-filter">
-            <h1>Emails Filter</h1>
-            <input type="text" v-model="filterBy.txt" @input="emitFilter" />
-            <button  @click="read"> READ</button>
-            <button  @click="unread"> UNREAD</button>
-            <button  @click="all"> ALL</button>
-            <button  @click="starred"> STARRED</button> 
-            <button  @click="all"> ALL</button>
-        </section> -->
+
         <div class="email-list-header flex space-between align-center">
                     <p class="email-list-header-title">messages</p>
                     <input class="search-input" type="search" name="" id="" placeholder="Search emails" v-model="filterBy.txt" @input="emitFilter">
                     <div class="email-list-filter flex">
-                        <button @click="all" class="filter-btn">all</button>
-                        <button @click="unread" class="filter-btn filter-btn-active">unread</button>
-                        <button @click="read" class="filter-btn">read</button>
-                        <button @click="starred" class="filter-btn">important</button>
+                        <button @click="all" class="filter-btn" :class="allFilterActive">all</button>
+                        <button @click="toggleUnreadFilter" class="filter-btn" :class="unreadFilterActive">unread</button>
+                        <button @click="toggleReadFilter" class="filter-btn" :class="readFilterActive">read</button>
+                        <button @click="toggleFavoriteFilter" class="filter-btn" :class="favoriteFilterActive">important</button>
                     </div>
         </div>
     `,
@@ -27,40 +16,57 @@ export default {
         return {
             filterBy: {
                 txt: '',
-                read: null,
-                // favorite:false,    
+                read: false,
+                unread: false,
+                favorite: false,
+                all: true
             }
         }
     },
-    computed:{
-        isActive(){
-            
-        }
+
+    computed: {
+        readFilterActive() {
+            return this.filterBy.read ? 'filter-btn-active' : '';
+        },
+        favoriteFilterActive() {
+            return this.filterBy.favorite ? 'filter-btn-active' : '';
+        },
+        unreadFilterActive() {
+            return this.filterBy.unread ? 'filter-btn-active' : '';
+        },
+        allFilterActive() {
+            return this.filterBy.all ? 'filter-btn-active' : '';
+        },
     },
     methods: {
-        all() {
-            this.filterBy = ''
-            this.emitFilter();
-            this.filterBy = {
-                txt: '',
-                read: null,
-                // favorite:false,    
-            }
-        },
-
-        read() {
-            this.filterBy.read = true
-            this.emitFilter();
-        },
-        unread() {
-            this.filterBy.read = false
-            this.emitFilter();
-        },
         emitFilter() {
             this.$emit('set-filter', this.filterBy);
         },
-        starred() {
-            this.filterBy.favorite = true;
+        toggleReadFilter() {
+            this.filterBy.read = !this.filterBy.read;
+            this.filterBy.unread = false;
+            this.filterBy.all = false;
+            this.emitFilter();
+        },
+        toggleUnreadFilter() {
+            this.filterBy.unread = !this.filterBy.unread;
+            this.filterBy.read = false;
+            this.filterBy.all = false;
+            this.emitFilter();
+        },
+        toggleFavoriteFilter() {
+            this.filterBy.favorite = !this.filterBy.favorite;
+            this.emitFilter();
+        },
+        toggleByAllFilter() {
+            this.filterBy.all = !this.filterBy.all;
+            this.emitFilter();
+        },
+        all() {
+            this.filterBy.all = true;
+            this.filterBy.read = false;
+            this.filterBy.unread = false;
+            this.filterBy.favorite = false;
             this.emitFilter();
         }
     }
