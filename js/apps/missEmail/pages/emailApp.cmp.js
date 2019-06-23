@@ -95,6 +95,7 @@ export default {
             let filteredEmails = emailsArr.filter((email) => {
                 return ((email.subject.indexOf(this.filterBy.txt) !== -1 || this.filterBy.txt === false) &&
                     (email.isRead === this.filterBy.read || this.filterBy.read === false) &&
+                    // (this.filterBy.all || this.filterBy.read === false) &&
                     (email.isRead === !this.filterBy.unread || this.filterBy.unread === false) &&
                     (email.isFavorite === this.filterBy.favorite || this.filterBy.favorite === false)
                 )

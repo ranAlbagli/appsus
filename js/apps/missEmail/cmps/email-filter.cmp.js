@@ -68,6 +68,10 @@ export default {
             this.filterBy.unread = false;
             this.filterBy.favorite = false;
             this.emitFilter();
-        }
+        },
+
+    },
+    created() {
+        this.emitFilter();
     }
 }
