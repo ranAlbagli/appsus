@@ -1,4 +1,5 @@
 import { notesTestData } from '../../../../notesData.js';
+import  utilService from '../../../services/utils-service.js'
 import keepStorageService from '../../../services/storage-service.js'
 
 const KEEP_KEY = 'keeps';
@@ -38,11 +39,60 @@ function styleKeep(id, bgColor) {
     });
 }
 
+function emptyKeep() {
+	return {
+		settings: {
+			type: 'note-text',
+			isPinned: false,
+			isMarked: false,
+			editMode: false,
+        },
+        bgColor:'',
+		data: {},
+	};
+}
+
 
 function deleteTodoByIdx(keepId, idx) { }
 
 
 function markDoneTodoByIdx(keepId, idx) { }
+
+
+
+function saveKeep(keep, data) {
+    // console.log('here at service');
+	if (!keep) Promise.reject();
+	switch (keep.settings.type) {
+		case 'note-text':
+			keep.data.text = data;
+			break;
+		case 'note-image':
+		case 'note-video':
+		case 'note-audio':
+			keep.data.src = data;
+			break;
+		case 'note-todo':
+			let listArr = data.split(',');
+			keep.data.todos = listArr.map(item => {
+				return { text: item, completed: false };
+			});
+			break;
+	}
+	// Save data
+	if (keep._id) {
+        console.log(keep._id);   
+		// Update existing note
+		let keepIdx = gKeeps.findIndex(currKeep => currKeep._id === keep._id);
+		gKeeps.splice(keepIdx, 1, keep);
+	} else {
+		// Add new note
+		keep._id = utilService.makeId();
+		gKeeps.unshift(keep);
+	}
+    keepStorageService.store(KEEP_KEY, gKeeps);
+	return Promise.resolve(keep);
+}
 
 
 export const keepService = {
@@ -52,5 +102,7 @@ export const keepService = {
   markDoneTodoByIdx,
   deleteTodoByIdx,
   deleteKeepById,
-  styleKeep
+  styleKeep,
+  emptyKeep,
+  saveKeep
 }

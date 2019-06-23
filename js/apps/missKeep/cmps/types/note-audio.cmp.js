@@ -8,10 +8,10 @@ export default {
 
             <p>{{keep.data.text}}</p>
 			<audio  controls :src="keep.data.src" style="width:100%;"></audio>
-            <note-action-bar :keep="keep" ></note-action-bar>
+            <note-action-bar :keep="keep" :noteTypesInfo="noteTypesInfo" ></note-action-bar>
 		</section>
 	`,
-    props: ['keep'],
+    props: ['keep','noteTypesInfo'],
     created() {
     },
     methods: {
