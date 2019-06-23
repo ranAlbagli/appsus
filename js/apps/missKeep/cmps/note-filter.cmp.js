@@ -11,11 +11,11 @@ export default {
 
 			<select v-model="filter.type" @change="updateFilter">
 				<option value="">All</option>
-				<option value="text">Text</option>
-				<option value="image">Image</option>
-				<option value="video">Video</option>
-				<option value="audio">Audio</option>
-				<option value="list">Todo</option>
+				<option value="note-text">Text</option>
+				<option value="note-img">Image</option>
+				<option value="note-video">Video</option>
+				<option value="note-audio">Audio</option>
+				<option value="note-todo">Todo</option>
 			</select>				
 
 		</section>
