@@ -64,12 +64,9 @@ body, h1, h2, h3, h4, h5, h6, p {
   width: 75vw;
 }
 
-.masonry{
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  max-height: 100vh;
-  max-width:100vw;
+.masonry {
+  margin: 0 auto 2em;
+  column-gap: 1.5em;
 }
 
 /* Helpers */
@@ -111,6 +108,7 @@ body, h1, h2, h3, h4, h5, h6, p {
 .justify-left {
   justify-content: left;
 }
-.wrap{
+
+.wrap {
   flex-wrap: wrap;
 }

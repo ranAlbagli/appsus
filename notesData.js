@@ -22,7 +22,8 @@ export const notesTestData = [
         },
         bgColor: '#fff',
         data: {
-            src: 'https://clips.vorwaerts-gmbh.de/VfE_html5.mp4',
+            // src: 'https://clips.vorwaerts-gmbh.de/VfE_html5.mp4',
+            src: 'https://www.youtube.com/watch?v=qjtMs7jQxEo',
         },
     },
     {

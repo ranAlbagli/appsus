@@ -1,6 +1,9 @@
-.note{
-    /* flex: 1; */
-    margin: 4px;
-    max-width: 300px;
+.note {
     padding: 10px;
+    margin: 20px;
+    transition: .3s;
+}
+
+.note:hover {
+    transform: scale(1.025);
 }
