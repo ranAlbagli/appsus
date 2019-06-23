@@ -60,6 +60,7 @@ body, h1, h2, h3, h4, h5, h6, p {
   flex-grow: 19;
   padding-left: 20px;
   padding-right: 100px;
+  width: 75vw;
 }
 
 /* Helpers */
