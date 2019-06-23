@@ -11,13 +11,38 @@ import noteImg from './types/note-img.cmp.js';
 export default {
     template: `
         <section class="masonry container" >
+                <pre> {{pinnedNotesToShow.length}} </pre>
+                <pre>    {{notesToShow.length}}    </pre>
+                
                 <component 
+                v-if="pinnedNotesToShow.length>0"
+                v-for="(keep,idx) in pinnedNotesToShow"
+                :key="keep.idx"
+                :is="keep.settings.type" 
+                :keep="keep" 
+                :noteTypesInfo="noteTypes[keep.settings.type]"
+                class="note ui-box"></component>
+
+                   <hr/>
+                <component 
+                v-if="notesToShow.length>0"
+                v-for="(keep,idx) in notesToShow"
+                :key="keep.idx"
+                :is="keep.settings.type" 
+                :keep="keep" 
+                :noteTypesInfo="noteTypes[keep.settings.type]"
+                class="note ui-box"></component>
+
+
+
+                <!-- <component 
                 v-for="(keep,idx) in keeps"
                 :key="idx"
                 :is="keep.settings.type" 
                 :keep="keep" 
                 :noteTypesInfo="noteTypes[keep.settings.type]"
-                class="note ui-box"></component>
+                class="note ui-box"></component> -->
+
         </section>
         `,
     props: ['keeps','noteTypes'],
@@ -25,6 +50,14 @@ export default {
        
         
     },
+    computed: {
+		pinnedNotesToShow() {
+			return this.keeps.filter(keep => (keep.settings.isPinned));
+		},
+		notesToShow() {
+			return this.keeps.filter(keep => (!keep.settings.isPinned));
+		}
+	}, 
     components: {
         noteText,
         noteVideo,

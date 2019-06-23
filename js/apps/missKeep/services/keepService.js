@@ -51,6 +51,14 @@ function emptyKeep() {
 		data: {},
 	};
 }
+function pinKeep(id) {
+    console.log('at the service ',id);
+	return getKeepById(id)
+		.then(keep => {
+			keep.settings.isPinned = !keep.settings.isPinned;
+            keepStorageService.store(KEEP_KEY, gKeeps);
+		});
+}
 
 
 function deleteTodoByIdx(keepId, idx) { }
@@ -105,5 +113,6 @@ export const keepService = {
   deleteKeepById,
   styleKeep,
   emptyKeep,
-  saveKeep
+  saveKeep,
+  pinKeep
 }
