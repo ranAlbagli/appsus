@@ -12,6 +12,7 @@
 @import 'email-details-cmp.css';
 @import 'note-add-cmp.css';
 @import 'note-list-cmp.css';
+@import 'note-filter-cmp.css';
 
 @import 'note-action-bar.css';
 @import 'masonry-container.css';

@@ -10,7 +10,6 @@
 
 @media (max-width: 980px) {
   .masonry {
-    background-color: lightblue;
     column-gap: 1.5em;
     column-count: 3;
   /* height: 100vh; */
@@ -20,7 +19,6 @@
 
 @media (max-width: 750px) {
   .masonry {
-    background-color: pink;
     column-gap: 1.5em;
     column-count: 2;
   /* height: 100vh; */
@@ -31,7 +29,7 @@
 
 @media (max-width: 540px) {
   .masonry {
-    background-color: blue;
+    
     column-gap: 1.5em;
     column-count: 1;
   /* height: 100vh; */

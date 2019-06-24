@@ -2,12 +2,12 @@
 
 export default {
 	template: `
-		<section class="search notes-filter flex justify-center">
-
-			<div>
-				<button class="fas fa-search" @click="updateFilter"></button>
-				<input v-model="filter.txt" type="search" placeholder="Search keeps" @input="updateFilter">
-			</div>
+		<section class="flex justify-center">
+		<div class="notes-filter ui-box flex">
+		
+				<button  class="fas fa-search search-btn" @click="updateFilter"></button>
+				<input class="filter-input" v-model="filter.txt" type="search" placeholder="Search keeps" @input="updateFilter">
+		
 
 			<select v-model="filter.type" @change="updateFilter">
 				<option value="">All</option>
@@ -17,7 +17,7 @@ export default {
 				<option value="note-audio">Audio</option>
 				<option value="note-todo">Todo</option>
 			</select>				
-
+	   </div>
 		</section>
 	`,
 	data() {
