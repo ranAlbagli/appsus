@@ -1,4 +1,5 @@
 import emailDetails from './email-details.cmp.js'
+import { bus, MAIL_DELETE, MAIL_MARK_FAVORITE, MAIL_MARK_READ } from '../../../services/eventBus-service.js'
 
 
 
