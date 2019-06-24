@@ -26,7 +26,7 @@ export default {
                         <p>{{this.email.body}}</p>
                     </div>
                     <div class="email-details-footer">
-                        <button @click="emitCloseDetails" class="filter-btn">close</button>
+                        <button @click.stop="emitCloseDetails" class="filter-btn">close</button>
                     </div>
               </section>
     `,
