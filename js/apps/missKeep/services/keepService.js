@@ -40,7 +40,6 @@ function styleKeep(id, bgColor) {
 }
 
 function pinKeep(id) {
-	console.log('at the service ', id);
 	return getKeepById(id)
 		.then(keep => {
 			keep.settings.isPinned = !keep.settings.isPinned;
@@ -58,10 +57,24 @@ function editKeep(id) {
 }
 
 
-function deleteTodoByIdx(keepId, idx) { }
+function deleteTodo(keepId, idx) {
+	return getKeepById(keepId)
+	.then(keep => {
+		keep.data.todos.splice(idx,1)
+		keepStorageService.store(KEEP_KEY, gKeeps);
+	});
+	
+ }
 
 
-function markDoneTodoByIdx(keepId, idx) { }
+function markDoneTodo(keepId, idx) {
+	return getKeepById(keepId)
+	.then(keep => {
+		keep.data.todos[idx].completed = !keep.data.todos[idx].completed;
+		keepStorageService.store(KEEP_KEY, gKeeps);
+	});
+	
+ }
 
 
 
@@ -104,10 +117,9 @@ function saveKeep(keep, data) {
 
 export const keepService = {
 	query,
-	deleteKeepById,
 	getKeepIdx,
-	markDoneTodoByIdx,
-	deleteTodoByIdx,
+	markDoneTodo,
+	deleteTodo,
 	deleteKeepById,
 	styleKeep,
 	saveKeep,

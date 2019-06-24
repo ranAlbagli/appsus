@@ -44,12 +44,7 @@ export default {
         bus.$on(KEEP_DELETE, (keepId) => {
             this.deleteKeep(keepId);
         })
-        bus.$on(MARK_TODO_DONE, todoIdx => {
-            this.markTodoDone(todoIdx);
-        })
-        bus.$on(DELETE_TODO, todoIdx => {
-            this.deleteTodo(todoIdx);
-        })
+     
         bus.$on(KEEP_PINNED, noteId => this.pinKeep(noteId));
 
         bus.$on(KEEP_MARKED, noteId => this.markKeep(noteId));
@@ -62,7 +57,11 @@ export default {
 
         bus.$on(KEEP_UPDATE, (note, data) => this.addKeep(note, data));
 
-        // eventBus.$on(EVENT_NOTE_EDITING, noteId => this.editNote(noteId));
+        bus.$on(MARK_TODO_DONE, (keep, id) => this.markDoneTodo(keep, id));
+
+        bus.$on(DELETE_TODO, (keep, id) => this.deleteTodo(keep, id));
+
+     
 
     },
 
@@ -70,13 +69,7 @@ export default {
         deleteKeep(keepId) {
             keepService.deleteKeepById(keepId)
         },
-        deleteTodo(keepId, idx) {
-            keepService.deleteTodoByIdx(keepId, idx);
-        },
-        markTodoDone(keepId, idx) {
-            keepService.deleteTodoByIdx(keepId, idx);
-        },
-
+      
         addKeep(note, data) {
 
             keepService.saveKeep(note, data);
@@ -88,8 +81,7 @@ export default {
             notesService.markNote(noteId);
         },
         styleKeep(keepId, bgColor) {
-            console.log('here');
-
+        
             keepService.styleKeep(keepId, bgColor);
         },
         addKeep(keep, data) {
@@ -101,6 +93,16 @@ export default {
         },
         editKeep(noteId) {
             keepService.editKeep(noteId);
+        },
+
+        markDoneTodo(keep,id){
+            keepService.markDoneTodo(keep,id)
+            
+        },
+
+        deleteTodo(keep,id){
+            
+            keepService.deleteTodo(keep,id)
         },
         keepsToShow() {
             let keeps = this.keeps;
@@ -134,35 +136,7 @@ export default {
     },
 
     computed: {
-        // keepsToShow() {
-        //     let keeps = this.keeps;
-        // 	if (this.filter && this.filter.type !== '') {
-        // 		keeps = keeps.filter(keep => this.filter.type === keep.settings.type)
-        // 	}
-
-        // 	if (this.filter && this.filter.txt) {
-        //         let searchTerm = this.filter.txt.toLowerCase()            
-        // 		keeps = keeps.filter(keep => {
-        // 			let strValue = '';
-        // 			switch (keep.settings.type) {
-        // 				case 'note-text':
-        //                     strValue = keep.data.text;   
-        // 					break;
-        // 				case 'note-img':
-        // 				case 'note-video':
-        // 				// case 'note-audio':
-        // 					strValue = keep.data.src;
-        // 					break;
-        // 				case 'note-todo':
-        // 					strValue = keep.data.todos.map(todo => todo.text).join(',');
-        // 					break;
-        // 			}
-        // 			return strValue.includes(searchTerm);
-        // 		})
-        // 	}
-
-        // 	return keeps;
-        // },
+      
 
         pinnedNotesToShow() {
             let keeps = this.keepsToShow()
