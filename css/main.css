@@ -79,7 +79,7 @@ body, h1, h2, h3, h4, h5, h6, p {
 	/* margin: 0 auto 2em; */
   column-gap: 1.5em;
   column-count: 4;
-  height: 100vh;
+  /* height: 100vh; */
   padding: 20px;
 }
 
@@ -125,11 +125,4 @@ body, h1, h2, h3, h4, h5, h6, p {
 
 .wrap {
   flex-wrap: wrap;
-}
-.one{
-   background-color: green;
-
-}
-.two{
-   background-color: antiquewhite
 }
