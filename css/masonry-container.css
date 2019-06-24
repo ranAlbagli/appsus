@@ -1,5 +1,4 @@
 .masonry {
-	/* margin: 0 auto 2em; */
   column-gap: 1.5em;
   column-count: 4;
   /* height: 100vh; */
@@ -13,7 +12,6 @@
     background-color: lightblue;
     column-gap: 1.5em;
     column-count: 3;
-  /* height: 100vh; */
     padding: 20px;
   }
 }
@@ -23,7 +21,6 @@
     background-color: pink;
     column-gap: 1.5em;
     column-count: 2;
-  /* height: 100vh; */
     padding: 20px;
   }
 }
@@ -34,7 +31,6 @@
     background-color: blue;
     column-gap: 1.5em;
     column-count: 1;
-  /* height: 100vh; */
     padding: 20px;
   }
 }

@@ -1,27 +1,27 @@
 /* Header */
 
 .dynamic-header {
-    height: 70px;
+    height: 4.375rem;
     box-shadow: 0px 0.1px 20px 0px #b3b3b3;
     z-index: 10;
-    padding-left: 70px;
-    padding-right: 120px;
+    padding-left: 4.375rem;;
+    padding-right: 7.5rem;
     background-color: white;
 }
 
 .logo {
     font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 5px;
-    margin-right: 100px;
-    font-size: 20px;
+    letter-spacing: 0.3125rem;
+    margin-right: 6.25rem;
+    font-size: 1.25rem;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .logo svg {
-    height: 40px;
+    height: 2.5rem;
 }
 
 .nav-bar li {
@@ -29,14 +29,14 @@
 }
 
 .nav-bar li:not(:first-child) {
-    margin-left: 10px;
+    margin-left: 0.625rem;
 }
 
 .search-input {
-    width: 400px;
+    width: 25rem;
     -webkit-appearance: none;
     border: 1px solid #dadada;
-    padding: 15px;
+    padding: 0.9375rem;
     font-size: 1rem;
     border-radius: 4px;
 }

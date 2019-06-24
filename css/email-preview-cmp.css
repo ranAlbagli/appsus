@@ -12,8 +12,6 @@
 .email-row:hover {
     padding-top: 10px;
     padding-bottom: 10px;
-    /* transform: scale(1.025); */
-    /* border:1px solid orange; */
 }
 
 .email-row img {
@@ -40,12 +38,10 @@
 }
 
 .email-sender-pic {
-    /* flex-grow: 1; */
     width: 5%;
 }
 
 .email-sender-name {
-    /* flex-grow: 1; */
     text-overflow: ellipsis;
     overflow: hidden;
     text-overflow: "...";
@@ -53,13 +49,11 @@
 }
 
 .email-preview {
-    /* flex-grow: 26; */
     width: 50%;
     color: #b3b3b3;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    /* width: 50px; */
     overflow: hidden;
     text-overflow: "...";
 }
@@ -70,7 +64,6 @@
 }
 
 .email-date {
-    /* flex-grow: 1; */
     width: 15%;
     color: #b3b3b3;
     text-align: right;
