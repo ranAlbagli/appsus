@@ -97,13 +97,11 @@ function saveKeep(keep, data) {
 			});
 			break;
 	}
-	// Save data
-	if (keep._id) {
-		// Update existing note
+	if (keep._id) {	
 		let keepIdx = gKeeps.findIndex(currKeep => currKeep._id === keep._id);
 		gKeeps.splice(keepIdx, 1, keep);
 	} else {
-		// Add new note
+	
 		keep._id = utilService.makeId();
 		gKeeps.unshift(keep);
 	}

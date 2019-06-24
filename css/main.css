@@ -135,7 +135,9 @@ body, h1, h2, h3, h4, h5, h6, p {
 .justify-center {
 	justify-content: center;
 }
-
+.col{
+  flex-direction: column;
+}
 
 .wrap {
   flex-wrap: wrap;
@@ -151,6 +153,11 @@ body, h1, h2, h3, h4, h5, h6, p {
   font-family: 'Lato-light',sans-serif;
 }
 
+.header-keep{
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+}
 
 
 .dropdown-colors{

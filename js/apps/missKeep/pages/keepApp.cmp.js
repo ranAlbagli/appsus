@@ -12,15 +12,14 @@ import {
 export default {
     template: `
         <section>
-            <note-filter @keep-filter="setFilter"></note-filter>
-            <note-add  :noteTypes="noteTypes"></note-add>
-            <!-- <note-list v-if="keepsToShow" :keeps="keepsToShow" :noteTypes="noteTypes"></note-list> -->
+          
+                <note-filter  @keep-filter="setFilter"></note-filter>
+                <note-add  :noteTypes="noteTypes"></note-add>
             <div v-if="pinnedNotesToShow.length>0" class="container">
                 <h2 class="bold-text">Pinned notes</h2>
                 <note-list v-if="pinnedNotesToShow" :keeps="pinnedNotesToShow" :noteTypes="noteTypes"></note-list>
             </div>
             <div v-if="unpinnedNotesToShow" class="container">
-                <!-- <h2 class="bold-text">Notes</h2> -->
                 <note-list v-if="unpinnedNotesToShow" :keeps="unpinnedNotesToShow" :noteTypes="noteTypes" ></note-list>
             </div>
         </section>`,

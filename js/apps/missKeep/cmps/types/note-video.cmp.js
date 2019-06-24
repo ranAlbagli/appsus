@@ -30,12 +30,7 @@ export default {
         }
     },
     computed: {
-        // videoUrl() {
-        //     var myYoutubeRegexp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i;
-        //     const id = this.keep.data.src;
-        //     const url = `https://www.youtube.com/embed/${myYoutubeRegexp}`;
-        //     return url;
-        // },
+    
         videoYoutubeUrl(){
             var myYoutubeRegexp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i;
             const id = myYoutubeRegexp.exec(this.keep.data.src)[1]
