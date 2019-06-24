@@ -11,7 +11,7 @@ export default {
                 <iframe 
                 :width="1280" 
                 :height="720" 
-                :src="this.keep.data.src"
+                :src="this.videoYoutubeUrl"
                 frameborder="0" 
                 allowfullscreen
                 ></iframe>
@@ -36,6 +36,16 @@ export default {
         //     const url = `https://www.youtube.com/embed/${myYoutubeRegexp}`;
         //     return url;
         // },
+        videoYoutubeUrl(){
+            var myYoutubeRegexp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i;
+            const id = myYoutubeRegexp.exec(this.keep.data.src)[1]
+            const url = `https://www.youtube.com/embed/${id}`;
+            console.log(url, 'from component');
+            	
+            return url;
+            
+        }
+        
     },
     mounted() {
     },

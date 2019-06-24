@@ -22,14 +22,28 @@ export const notesTestData = [
         },
         bgColor: '#fff',
         data: {
-            // src: 'https://clips.vorwaerts-gmbh.de/VfE_html5.mp4',
-            src: 'https://www.youtube.com/watch?v=7u-IphRB-GI',
+           
+            src: 'https://www.youtube.com/watch?v=x4gh4BMyN7Y',
+        },
+    },
+    {
+        _id: '000000034ergtfdfhs54',
+        settings: {
+            type: 'note-video',
+            isPinned: false,
+            isMarked: false,
+            editMode: false
+        },
+        bgColor: '#fff',
+        data: {
+           
+            src: 'https://www.youtube.com/watch?v=g0BswcSH700',
         },
     },
     {
         _id: '222234ergtfdfs54',
         settings: {
-            type: 'note-text',
+            type: 'note-img',
             isPinned: false,
             isMarked: false,
             editMode: false
@@ -49,7 +63,7 @@ export const notesTestData = [
         },
         bgColor: '#fff',
         data: {
-            src: 'https://cld2099web.audiovideoweb.com/va90web25003/companions/Foundations%20of%20Rock/13.01.mp3',
+            src: 'https://www22.zippyshare.com/d/Fxx2xFO4/954426/%d7%a1%d7%98%20%d7%99%d7%95%d7%9d%20%d7%94%d7%a2%d7%a6%d7%9e%d7%90%d7%95%d7%aa%202019.mp3',
         },
     },
     {
