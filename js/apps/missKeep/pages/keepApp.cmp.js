@@ -102,7 +102,7 @@ export default {
 			}
 
 			if (this.filter && this.filter.txt) {
-                let searchTerm = this.filter.txt.toLowerCase()            
+                let searchTerm = this.filter.txt             
 				keeps = keeps.filter(keep => {
 					let strValue = '';
 					switch (keep.settings.type) {
@@ -111,14 +111,13 @@ export default {
 							break;
 						case 'note-img':
 						case 'note-video':
-						// case 'note-audio':
-							strValue = keep.data.src;
+						case 'note-audio':
 							break;
 						case 'note-todo':
 							strValue = keep.data.todos.map(todo => todo.text).join(',');
 							break;
-					}
-					return strValue.includes(searchTerm);
+                    }
+					return strValue.indexOf(searchTerm)!==-1;
 				})
 			}
 
