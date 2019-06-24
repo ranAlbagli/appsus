@@ -1,0 +1,23 @@
+.notes-add{
+    padding: 10px;
+    margin: 10px;
+}
+.notes-add input[type=text]{
+    padding: 10px;
+    /* font-size:1rem; */
+    outline: none;
+    border:1px solid #b3b3b3;
+    border-radius:4px;
+}
+.add-btn{
+    border: none;
+    cursor: pointer;
+    color: #b3b3b3;
+    outline: none;
+    background-color: rgba(0, 0, 0, 0.0);
+    font-size: 1rem;
+}
+.active-add{
+    font-weight: bold;
+    color: black;
+}

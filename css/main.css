@@ -10,8 +10,8 @@
 @import 'note-container.css';
 @import 'responsive-video.css';
 @import 'email-details-cmp.css';
-
-
+@import 'note-add-cmp.css';
+@import 'note-list-cmp.css';
 
 @import 'note-action-bar.css';
 @import 'masonry-container.css';
@@ -86,9 +86,7 @@ body, h1, h2, h3, h4, h5, h6, p {
 
 
 
-.pinned{
-  color: red;
-}
+
 
 /* Helpers */
 

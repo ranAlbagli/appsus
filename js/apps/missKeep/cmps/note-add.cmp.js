@@ -4,21 +4,31 @@ import { keepService } from '../services/keepService.js';
 export default {
 	props: ['noteTypes'],
 	template: `
-		<section class="notes-add flex justify-center ">
-
-			<input :type="fieldType" autocomplete="off" v-model="userData"
-				:placeholder="placeholder" @keyup.enter="addKeep" ref="newNoteEl" />
-
-			<div class="flex space-between">
-				<template v-for="(noteType, idx) in noteTypes">
-					<i :class="setSelectedType(idx, noteType.icon)" @click="updateSelectedType(idx)"></i> 
-				</template>
+		<section class="flex justify-center">
+			<div class="notes-add ui-box flex">
+				<input type="text" autocomplete="off" v-model="userData"
+					:placeholder="placeholder" @keyup.enter="addKeep" ref="newNoteEl" />
+	
+				<div class="flex space-between">
+					<template v-for="(noteType, idx) in noteTypes">
+						<button class="add-btn"><i :class="setSelectedType(idx, noteType.icon)" @click="updateSelectedType(idx)"></i></button>
+					</template>
+				</div>
 			</div>
 		</section>
 	`,
 	data() {
 		return {
-			newNote: keepService.emptyKeep(),
+			newNote: {
+				settings: {
+					type: 'note-text',
+					isPinned: false,
+					isMarked: false,
+					editMode: false,
+				},
+				bgColor: '',
+				data: {},
+			},
 			userData: ''
 		}
 	},
@@ -33,17 +43,26 @@ export default {
 	methods: {
 		setSelectedType(noteType, noteIcon) {
 			return (this.newNote.settings.type === noteType)
-				? noteIcon + ' fa-lg selected'
-				: noteIcon + ' fa-lg';
-        },
-        
+				? noteIcon + ' active-add'
+				: noteIcon + ' ';
+		},
+
 		updateSelectedType(noteType) {
 			this.newNote.settings.type = noteType;
 			this.$refs.newNoteEl.focus();
 		},
 		addKeep() {
 			bus.$emit(KEEP_ADDED, this.newNote, this.userData);
-			this.newNote = keepService.emptyKeep();
+			this.newNote = {
+				settings: {
+					type: 'note-text',
+					isPinned: false,
+					isMarked: false,
+					editMode: false,
+				},
+				bgColor: '',
+				data: {},
+			}
 			this.userData = '';
 		},
 	}

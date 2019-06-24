@@ -10,7 +10,7 @@ import noteImg from './types/note-img.cmp.js';
 
 export default {
     template: `
-        <section class="masonry container" >
+        <section class="note-list masonry container" >
                 <component 
                 v-for="(keep,idx) in keeps"
                 :key="idx"

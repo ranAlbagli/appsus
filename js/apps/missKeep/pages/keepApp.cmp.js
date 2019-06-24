@@ -3,9 +3,10 @@ import noteAdd from '../cmps/note-add.cmp.js';
 import noteList from '../cmps/note-list.cmp.js';
 import noteFilter from '../cmps/note-filter.cmp.js';
 
-import { bus,  KEEP_DELETE,MARK_TODO_DONE,DELETE_TODO,
-         KEEP_PINNED,KEEP_MARKED,KEEP_STYLED,KEEP_ADDED ,KEEP_EDIT,KEEP_UPDATE
-        } from '../../../services/eventBus-service.js';
+import {
+    bus, KEEP_DELETE, MARK_TODO_DONE, DELETE_TODO,
+    KEEP_PINNED, KEEP_MARKED, KEEP_STYLED, KEEP_ADDED, KEEP_EDIT, KEEP_UPDATE
+} from '../../../services/eventBus-service.js';
 
 
 export default {
@@ -14,161 +15,174 @@ export default {
             <note-filter @keep-filter="setFilter"></note-filter>
             <note-add  :noteTypes="noteTypes"></note-add>
             <!-- <note-list v-if="keepsToShow" :keeps="keepsToShow" :noteTypes="noteTypes"></note-list> -->
-            <note-list v-if="pinnedNotesToShow" :keeps="pinnedNotesToShow" :noteTypes="noteTypes"></note-list>
-            <note-list v-if="notesToShow" :keeps="notesToShow" :noteTypes="noteTypes"></note-list>
+            <div v-if="pinnedNotesToShow.length>0" class="container">
+                <h2 class="bold-text">Pinned notes</h2>
+                <note-list v-if="pinnedNotesToShow" :keeps="pinnedNotesToShow" :noteTypes="noteTypes"></note-list>
+            </div>
+            <div v-if="unpinnedNotesToShow" class="container">
+                <!-- <h2 class="bold-text">Notes</h2> -->
+                <note-list v-if="unpinnedNotesToShow" :keeps="unpinnedNotesToShow" :noteTypes="noteTypes" ></note-list>
+            </div>
         </section>`,
     data() {
         return {
             noteTypes: {
-				'note-text': { field: 'text', icon: 'fas fa-font', placeholder: 'What’s on your mind...' },
-				'note-img': { field: 'url', icon: 'far fa-image', placeholder: 'Enter image URL...' },
-				'note-video': { field: 'url', icon: 'fab fa-youtube', placeholder: 'Enter video URL...' },
-				'note-audio': { field: 'url', icon: 'fas fa-volume-up', placeholder: 'Enter audio URL...' },
-				'note-todo': { field: 'text', icon: 'fas fa-list', placeholder: 'Enter comma separated list...' },
-			},
-            keeps:[],
+                'note-text': { field: 'text', icon: 'fas fa-font', placeholder: 'What’s on your mind...' },
+                'note-img': { field: 'url', icon: 'far fa-image', placeholder: 'Enter image URL...' },
+                'note-video': { field: 'url', icon: 'fab fa-youtube', placeholder: 'Enter video URL...' },
+                'note-audio': { field: 'url', icon: 'fas fa-volume-up', placeholder: 'Enter audio URL...' },
+                'note-todo': { field: 'text', icon: 'fas fa-list', placeholder: 'Enter comma separated list...' },
+            },
+            keeps: [],
             filter: '',
         }
     },
     created() {
         keepService.query().then((res) => {
-            this.keeps = res;  
+            this.keeps = res;
         })
         bus.$on(KEEP_DELETE, (keepId) => {
             this.deleteKeep(keepId);
         })
-        bus.$on(MARK_TODO_DONE,todoIdx=>{
+        bus.$on(MARK_TODO_DONE, todoIdx => {
             this.markTodoDone(todoIdx);
         })
-        bus.$on(DELETE_TODO,todoIdx=>{
+        bus.$on(DELETE_TODO, todoIdx => {
             this.deleteTodo(todoIdx);
         })
         bus.$on(KEEP_PINNED, noteId => this.pinKeep(noteId));
-        
+
         bus.$on(KEEP_MARKED, noteId => this.markKeep(noteId));
-        
+
         bus.$on(KEEP_STYLED, (noteId, bgColor) => this.styleKeep(noteId, bgColor));
 
         bus.$on(KEEP_ADDED, (note, data) => this.addKeep(note, data));
-        
+
         bus.$on(KEEP_EDIT, noteId => this.editKeep(noteId));
 
         bus.$on(KEEP_UPDATE, (note, data) => this.addKeep(note, data));
 
         // eventBus.$on(EVENT_NOTE_EDITING, noteId => this.editNote(noteId));
-           
+
     },
 
-    methods:{
-        deleteKeep(keepId) {     
+    methods: {
+        deleteKeep(keepId) {
             keepService.deleteKeepById(keepId)
         },
-        deleteTodo(keepId,idx){
-            keepService.deleteTodoByIdx(keepId,idx);
+        deleteTodo(keepId, idx) {
+            keepService.deleteTodoByIdx(keepId, idx);
         },
-        markTodoDone(keepId,idx){
-            keepService.deleteTodoByIdx(keepId,idx);
+        markTodoDone(keepId, idx) {
+            keepService.deleteTodoByIdx(keepId, idx);
         },
 
         addKeep(note, data) {
 
-			keepService.saveKeep(note, data);
-		},
-		pinKeep(noteId) {       
-			keepService.pinKeep(noteId);
-		},
-		markKeep(noteId) {
-			notesService.markNote(noteId);
-		},
-		styleKeep(keepId, bgColor) {
+            keepService.saveKeep(note, data);
+        },
+        pinKeep(noteId) {
+            keepService.pinKeep(noteId);
+        },
+        markKeep(noteId) {
+            notesService.markNote(noteId);
+        },
+        styleKeep(keepId, bgColor) {
             console.log('here');
-            
-			keepService.styleKeep(keepId, bgColor);
+
+            keepService.styleKeep(keepId, bgColor);
         },
         addKeep(keep, data) {
-			keepService.saveKeep(keep, data);
+            keepService.saveKeep(keep, data);
         },
-        
+
         setFilter(filter) {
             this.filter = filter
         },
-        editKeep(noteId) {  
-			keepService.editKeep(noteId);
+        editKeep(noteId) {
+            keepService.editKeep(noteId);
         },
         keepsToShow() {
             let keeps = this.keeps;
-			if (this.filter && this.filter.type !== '') {
-				keeps = keeps.filter(keep => this.filter.type === keep.settings.type)
-			}
+            if (this.filter && this.filter.type !== '') {
+                keeps = keeps.filter(keep => this.filter.type === keep.settings.type)
+            }
 
-			if (this.filter && this.filter.txt) {
-                let searchTerm = this.filter.txt.toLowerCase()            
-				keeps = keeps.filter(keep => {
-					let strValue = '';
-					switch (keep.settings.type) {
-						case 'note-text':
-                            strValue = keep.data.text;   
-							break;
-						case 'note-img':
-						case 'note-video':
-						// case 'note-audio':
-							strValue = keep.data.src;
-							break;
-						case 'note-todo':
-							strValue = keep.data.todos.map(todo => todo.text).join(',');
-							break;
-					}
-					return strValue.includes(searchTerm);
-				})
-			}
+            if (this.filter && this.filter.txt) {
+                let searchTerm = this.filter.txt.toLowerCase()
+                keeps = keeps.filter(keep => {
+                    let strValue = '';
+                    switch (keep.settings.type) {
+                        case 'note-text':
+                            strValue = keep.data.text;
+                            break;
+                        case 'note-img':
+                        case 'note-video':
+                            // case 'note-audio':
+                            strValue = keep.data.src;
+                            break;
+                        case 'note-todo':
+                            strValue = keep.data.todos.map(todo => todo.text).join(',');
+                            break;
+                    }
+                    return strValue.includes(searchTerm);
+                })
+            }
 
-			return keeps;
+            return keeps;
         },
- 
+
     },
 
     computed: {
-		// keepsToShow() {
+        // keepsToShow() {
         //     let keeps = this.keeps;
-		// 	if (this.filter && this.filter.type !== '') {
-		// 		keeps = keeps.filter(keep => this.filter.type === keep.settings.type)
-		// 	}
+        // 	if (this.filter && this.filter.type !== '') {
+        // 		keeps = keeps.filter(keep => this.filter.type === keep.settings.type)
+        // 	}
 
-		// 	if (this.filter && this.filter.txt) {
+        // 	if (this.filter && this.filter.txt) {
         //         let searchTerm = this.filter.txt.toLowerCase()            
-		// 		keeps = keeps.filter(keep => {
-		// 			let strValue = '';
-		// 			switch (keep.settings.type) {
-		// 				case 'note-text':
+        // 		keeps = keeps.filter(keep => {
+        // 			let strValue = '';
+        // 			switch (keep.settings.type) {
+        // 				case 'note-text':
         //                     strValue = keep.data.text;   
-		// 					break;
-		// 				case 'note-img':
-		// 				case 'note-video':
-		// 				// case 'note-audio':
-		// 					strValue = keep.data.src;
-		// 					break;
-		// 				case 'note-todo':
-		// 					strValue = keep.data.todos.map(todo => todo.text).join(',');
-		// 					break;
-		// 			}
-		// 			return strValue.includes(searchTerm);
-		// 		})
-		// 	}
+        // 					break;
+        // 				case 'note-img':
+        // 				case 'note-video':
+        // 				// case 'note-audio':
+        // 					strValue = keep.data.src;
+        // 					break;
+        // 				case 'note-todo':
+        // 					strValue = keep.data.todos.map(todo => todo.text).join(',');
+        // 					break;
+        // 			}
+        // 			return strValue.includes(searchTerm);
+        // 		})
+        // 	}
 
-		// 	return keeps;
+        // 	return keeps;
         // },
 
         pinnedNotesToShow() {
-            let keeps= this.keepsToShow()
-			return keeps.filter(keep => (keep.settings.isPinned));
-		},
-		notesToShow() {
-            let keeps= this.keepsToShow()
-			return keeps.filter(keep => (!keep.settings.isPinned));
-		}
-	
-	},
-    components:{
+            let keeps = this.keepsToShow()
+            let pinnedKeeps = keeps.filter(keep => (keep.settings.isPinned));
+            console.log(pinnedKeeps.length);
+
+            return pinnedKeeps;
+        },
+        unpinnedNotesToShow() {
+            let keeps = this.keepsToShow()
+            let unpinnedKeeps = keeps.filter(keep => (!keep.settings.isPinned));
+
+            console.log(unpinnedKeeps.length);
+            
+            return unpinnedKeeps
+        }
+
+    },
+    components: {
         noteAdd,
         noteList,
         noteFilter

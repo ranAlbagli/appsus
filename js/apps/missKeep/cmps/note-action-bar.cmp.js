@@ -7,7 +7,7 @@ export default {
 
 			  <i :class="getIconClass"></i> 
 			  <span> &nbsp; </span>  
-			<i class="fas fa-thumbtack" :class="{pinned: keep.settings.isPinned}" title="Pin keep" @click="pinKeep"></i>
+			<i class="fas fa-thumbtack" :class="{'pinned': keep.settings.isPinned}" title="Pin keep" @click="pinKeep"></i>
 			<i class="fas fa-palette info colors dropdown" title="Change keep color">
 				<div v-if="colorMode" class="dropdown-colors">
 					<template v-for="color in Colors">
