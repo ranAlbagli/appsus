@@ -1,6 +1,5 @@
 import noteVideo from './types/note-video.cmp.js';
 import noteText from './types/note-text.cmp.js';
-import noteMap from './types/note-map.cmp.js';
 import noteTodo from './types/note-todo.cmp.js';
 import noteAudio from './types/note-audio.cmp.js';
 import noteImg from './types/note-img.cmp.js';
@@ -31,7 +30,7 @@ export default {
         noteVideo,
         noteTodo,
         noteImg,
-        noteMap,
+
         noteAudio
     }
 }

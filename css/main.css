@@ -84,7 +84,13 @@ body, h1, h2, h3, h4, h5, h6, p {
 
 
 
-
+.open-logo{
+  width: 500px;
+  text-align: center;
+}
+.home-container{
+  height: 85vh;
+}
 
 
 /* Helpers */
