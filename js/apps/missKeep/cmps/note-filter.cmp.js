@@ -6,7 +6,7 @@ export default {
 		<div class="notes-filter ui-box flex">
 		
 				<button  class="fas fa-search search-btn" @click="updateFilter"></button>
-				<input class="filter-input" v-model="filter.txt" type="search" placeholder="Search keeps" @input="updateFilter">
+				<input class="filter-input" v-model="filter.txt" type="search" placeholder="Search keeps..." @input="updateFilter">
 		
 
 			<select v-model="filter.type" @change="updateFilter">

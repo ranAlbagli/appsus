@@ -15,7 +15,6 @@ var app = new Vue({
     template: `
         <div>  
             <app-header></app-header>
-            <!-- <home-page></home-page> -->
             <router-view></router-view>
             <app-footer></app-footer>
         </div>
@@ -23,7 +22,7 @@ var app = new Vue({
     components: {
         appHeader,
         appFooter,
-        // homePage
+        
     },
     methods: {
     },

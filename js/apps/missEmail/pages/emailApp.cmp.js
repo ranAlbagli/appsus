@@ -23,7 +23,7 @@ export default {
                 </div>
                 <nav class="mails-aside-nav">
                     <ul class="clean-list">
-                        <!-- <li><a class="active" href="#">inbox ({{emailsUnreadCount}})</a></li> -->
+                       
                         <li>
                             <email-status 
                                 :totalCount="emailTotalCount"
