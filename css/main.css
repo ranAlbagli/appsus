@@ -126,7 +126,6 @@ body, h1, h2, h3, h4, h5, h6, p {
 .wrap {
   flex-wrap: wrap;
 }
-<<<<<<< HEAD
 
 .bold-text{
   font-family: 'Lato-black',sans-serif;
@@ -137,5 +136,3 @@ body, h1, h2, h3, h4, h5, h6, p {
 .light-text{
   font-family: 'Lato-light',sans-serif;
 }
-=======
->>>>>>> d596161657c64764cb2a594f30c7df7bf0e0c497
