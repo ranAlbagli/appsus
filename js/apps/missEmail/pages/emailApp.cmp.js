@@ -17,14 +17,13 @@ export default {
                 <div class="user-status flex align-center">
                     <img src="21.jpg" alt="" />
                     <div>
-                        <p class="user-name">Welcome Sergei</p>
-                        <p class="user-role">team admin</p>
+                        <p class="user-name">Welcome user</p>
+                        <p class="user-role">Lorem ipsum dolor siepturi!</p>
                     </div>
                 </div>
                 <nav class="mails-aside-nav">
                     <ul class="clean-list">
-                        <li><a class="active" href="#">inbox ({{emailsUnreadCount}})</a></li>
-                        <li><a href="#" >Deleted</a></li>
+                        <!-- <li><a class="active" href="#">inbox ({{emailsUnreadCount}})</a></li> -->
                         <li>
                             <email-status 
                                 :totalCount="emailTotalCount"

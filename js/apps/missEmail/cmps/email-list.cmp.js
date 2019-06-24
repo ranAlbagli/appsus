@@ -1,9 +1,6 @@
 //cmps import
 import emailPreview from '../cmps/email-preview.cmp.js'
 
-//service import
-import { emailService } from '../services/emailService.js'
-
 export default {
     template: `
    <div class="email-list ui-box">
@@ -19,15 +16,6 @@ export default {
         return {
 
         }
-    },
-    computed: {
-
-    },
-    created() {
-
-    },
-    methods: {
-
     },
     components: {
         emailPreview

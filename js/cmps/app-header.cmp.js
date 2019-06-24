@@ -12,17 +12,12 @@ export default {
 	c2.73,10.14,6.95,20.29,12.51,29.17c10.01,15.97,8.34,32.06,4.4,48.77c-40.1-1.99-86.62-20.31-99.57-65.23
 	C22.81,120.6,22.94,107.19,29.67,86.58z"/>
 </svg>appsus</div>
-                    <!-- <div class="search">
-                        <input class="search-input" type="search" name="" id="" placeholder="Search emails">
-                    </div> -->
                 </div>
                 <nav class="appsus-nav">
                     <ul class="nav-bar clean-list flex">
                         <li><router-link exact to="/">home</router-link></li>
                         <li><router-link to="/mail">mail</router-link></li>
                         <li><router-link to="/keep">keep</router-link></li>
-                        <li><router-link to="/books">books</router-link></li>
-                        <li><router-link to="/about">about</router-link></li>
                     </ul>
                 </nav>
             </header>`

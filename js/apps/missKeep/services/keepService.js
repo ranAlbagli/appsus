@@ -18,7 +18,7 @@ function deleteKeepById(keepId) {
 	const keepIdx = getKeepIdx(keepId);
 	gKeeps.splice(keepIdx, 1);
 	keepStorageService.store(KEEP_KEY, gKeeps);
-	return Promise.resolve(console.log(`${keepId} removed`))
+	return Promise.resolve()
 }
 
 function getKeepIdx(keepId) {
@@ -79,7 +79,6 @@ function markDoneTodo(keepId, idx) {
 
 
 function saveKeep(keep, data) {
-	console.log('here at service', keep, data);
 
 	if (!keep) Promise.reject();
 	switch (keep.settings.type) {
@@ -100,7 +99,6 @@ function saveKeep(keep, data) {
 	}
 	// Save data
 	if (keep._id) {
-		console.log(keep._id);
 		// Update existing note
 		let keepIdx = gKeeps.findIndex(currKeep => currKeep._id === keep._id);
 		gKeeps.splice(keepIdx, 1, keep);

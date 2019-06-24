@@ -12,10 +12,7 @@ export default {
 		</section>
 	`,
     props:['keep','noteTypesInfo'],
-    created(){
-
-        console.log(this.keep);
-        
+    created(){        
     },
     methods: {
        
