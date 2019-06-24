@@ -9,7 +9,7 @@ export default {
 			  <span> &nbsp; </span>  
 			<i class="fas fa-thumbtack" :class="{pinned: keep.settings.isPinned}" title="Pin keep" @click="pinKeep"></i>
 			<i class="fas fa-palette info colors dropdown" title="Change keep color">
-				<div class="dropdown-colors">
+				<div v-if="colorMode" class="dropdown-colors">
 					<template v-for="color in Colors">
 						<span :style="{'background-color': color.value}"
 							:class="getBgColorClass(color.value)"
@@ -26,6 +26,9 @@ export default {
 		getIconClass() {
 			return this.noteTypesInfo.icon ;
 		},
+		colorMode(){
+			return true
+		}
 
     },
     created(){

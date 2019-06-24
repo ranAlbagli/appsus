@@ -12,6 +12,7 @@
 @import 'email-details-cmp.css';
 
 
+
 @import 'note-action-bar.css';
 @import 'masonry-container.css';
 
@@ -86,6 +87,7 @@ body, h1, h2, h3, h4, h5, h6, p {
 
 
 
+
 .pinned{
   color: red;
 }
@@ -148,4 +150,28 @@ body, h1, h2, h3, h4, h5, h6, p {
 }
 .light-text{
   font-family: 'Lato-light',sans-serif;
+}
+
+
+
+.dropdown-colors{
+  visibility: hidden;
+  transition: .3s;
+}
+
+.note-action-bar :hover .dropdown-colors{
+     
+     visibility: visible;
+     
+  
+}
+
+.note-action-bar i.colors span{
+	  width: 10px;
+    height: 10px;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 50%;
+    margin: 1px
+    
 }

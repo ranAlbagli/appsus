@@ -88,8 +88,10 @@ function saveKeep(keep, data) {
 			keep.data.text = data;
 			break;
 		case 'note-img':
+			keep.data.src = data;
+			break;
 		case 'note-video':
-		case 'note-audio':
+			data= getYoutubeid(data)
 			keep.data.src = data;
 			break;
 		case 'note-todo':
@@ -112,6 +114,14 @@ function saveKeep(keep, data) {
 	}
     keepStorageService.store(KEEP_KEY, gKeeps);
 	return Promise.resolve(keep);
+}
+
+function getYoutubeid(data){
+	var myYoutubeRegexp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i;
+	const id = myYoutubeRegexp.exec(data)[1]
+	const url = `https://www.youtube.com/embed/${id}`;	
+    return url;
+	
 }
 
 
