@@ -49,13 +49,7 @@ function pinKeep(id) {
 }
 
 
-<<<<<<< HEAD
-function editKeep(id) {
-	console.log('at the service');
-
-=======
 function editKeep(id) { 
->>>>>>> 07a8dbc5d22b6265cf90b5bf30fd5005d13ba87d
 	return getKeepById(id)
 		.then(keep => {
 			keep.settings.editMode = !keep.settings.editMode;
