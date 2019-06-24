@@ -1,4 +1,5 @@
 import noteActionBar  from '../note-action-bar.cmp.js'
+import noteEdit  from '../note-edit.cmp.js'
 
 
 export default {
@@ -15,6 +16,7 @@ export default {
 				</li>
 			</ul>
             <note-action-bar :keep="keep"  :noteTypesInfo="noteTypesInfo" ></note-action-bar>
+            <note-edit :keep="keep" v-if="keep.settings.editMode"></note-edit>
 		</section>
     `,
     props: ['keep','noteTypesInfo'],
@@ -35,7 +37,8 @@ export default {
 
     },
     components:{
-        noteActionBar
+        noteActionBar,
+        noteEdit
     }
 
 }
