@@ -1,25 +1,39 @@
-import { bus, MAIL_DELETE, MAIL_MARK_FAVORITE, MAIL_MARK_READ } from '../../../services/eventBus-service.js'
-
+import emailDetails from './email-details.cmp.js'
 
 
 
 export default {
     template: `
-        <div class="email-row flex align-center space-between" :class="isRead">
-                    <div class="email-star"><button @click="emitEmailFavorite"><i :class="isFavorite" class="fas fa-star" ></i></button></div>
-                    <div class="email-sender-pic"><img :src="avatar" alt=""></div>
-                    <div class="email-sender-name">{{this.email.from}}</div>
-                    <div class="email-preview"><span>{{this.email.subject}}</span>  {{this.email.body.substring(0, 90)}}</div>
-                    <div class="email-date">{{formatDate}}</div>
-                    <div class="email-options">
-                        <button @click="emitEmailRead"><i :class="btnText"></i></button>
-                        <button @click="emitEmailDelete"><i class="fas fa-trash"></i></button>
+        <section>
+            <div v-if="!dispalyDetails" class="email-row flex align-center space-between" :class="isRead" @click.stop="showDetails">
+                        <div class="email-star"><button @click.stop="emitEmailFavorite"><i :class="isFavorite" class="fas fa-star" ></i></button></div>
+                        <div class="email-sender-pic"><img :src="avatar" alt=""></div>
+                        <div class="email-sender-name">{{this.email.from}}</div>
+                        <div class="email-preview"><span>{{this.email.subject}}</span>  {{this.email.body.substring(0, 90)}}</div>
+                        <div class="email-date">{{formatDate}}</div>
+                        <div class="email-options">
+                            <button @click.stop="emitEmailRead"><i :class="btnText"></i></button>
+                            <button @click.stop="emitEmailDelete"><i class="fas fa-trash"></i></button>
+                        </div>
                     </div>
-        </div>
+                    <email-details 
+                    @close-details="showDetails"
+                    @delete-email="emitEmailDelete"
+                    @favorite-email="emitEmailFavorite"
+                    @
+                    v-if='dispalyDetails' 
+                    class=""
+                    :email="email"
+                    :formatDate="formatDate"
+                    :avatarSrc="avatar"
+                    :isRead='btnText'
+                    :isFavorite="isFavorite"
+                    ></email-details>
+        </section>
     `,
     data() {
         return {
-
+            dispalyDetails: false,
         }
     },
     props: ['email'],
@@ -32,6 +46,10 @@ export default {
         },
         emitEmailFavorite() {
             bus.$emit(MAIL_MARK_FAVORITE, this.email._id);
+        },
+        showDetails() {
+            this.dispalyDetails = !this.dispalyDetails;
+            this.email.isRead = true;
         }
     },
     computed: {
@@ -58,7 +76,9 @@ export default {
         }
     },
     created() {
-        // console.log(this.email)
+    },
+    components: {
+        emailDetails
     }
 
 

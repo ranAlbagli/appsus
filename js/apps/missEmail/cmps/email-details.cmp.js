@@ -1,24 +1,47 @@
+import { bus, MAIL_DELETE, MAIL_MARK_FAVORITE, MAIL_MARK_READ } from '../../../services/eventBus-service.js'
+
 export default {
-    template: `<section>
+    template: `<section class="email-details">
                     <div class="email-details-header">
-                        <h2>Receipt for Your Payment to Digital River Ireland Ltd</h2>
-                        <div class="from-container">
-                            <img src="" alt=""/>
-                           <p>
-                               service@paypal.co.il
-                           </p> 
+                        <div class="email-subject flex space-between align-center">
+                            <div class="flex align-center">
+                                <button @click.stop="emitFavorite"><i :class="this.isFavorite"  class="fas fa-star" ></i></button>
+                                <h2 class="bold-text">{{this.email.subject}}</h2>
+                            </div>
+                            <div class="flex align-center">
+                                <div>
+                                    <button disabled><i :class="this.isRead" ></i></button>
+                                    <button @click.stop="emitEmailDelete"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="email-from-details flex space-between">
+                            <div class="from-address flex align-center">
+                                <img :src="this.avatarSrc" alt=""/>
+                                <p>{{this.email.from}}</p>
+                            </div>
+                            <div class="details-date flex align-center">{{this.formatDate}}</div>
                         </div>
                     </div>
                     <div class="email-details-body">
-                        <p>Hope you are doing well and having a great day!.
-
-I just wanted to take a quick second and not only Thank You, but also Congratulate you on making a great decision buying our 62-in-1 Precision Screwdriver Set yesterday.
-
-It will help FIX, INSTALL, ASSEMBLE and DISASSEMBLE all sort of electronic devices such as Cellphones, TVs, Laptops, Desktops, Cameras, Watches, kitchen devices and so much more. It will also help FIX, INSTALL, ASSEMBLE and DISASSEMBLE non-electronics such as Furniture, Sunglasses, Toys and more.</p>
+                        <p>{{this.email.body}}</p>
                     </div>
-                    <div class="email-details-footeer">
-                        <button>close</button>
+                    <div class="email-details-footer">
+                        <button @click="emitCloseDetails" class="filter-btn">close</button>
                     </div>
               </section>
     `,
+    props: ['email','formatDate','avatarSrc','isRead','isFavorite'],
+    methods: {
+        emitCloseDetails() {
+            this.$emit('close-details')
+        },
+        emitEmailDelete() {
+            this.$emit('delete-email');
+            this.emitCloseDetails();
+        },
+        emitFavorite(){
+            this.$emit('favorite-email');
+        }
+    }
 }

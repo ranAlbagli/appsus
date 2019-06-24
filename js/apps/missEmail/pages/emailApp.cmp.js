@@ -61,7 +61,6 @@ export default {
                 </div>
             </div>
             <email-list :emails="emailsToShow"></email-list>
-            <email-details class="ui-box"></email-details>
         </div>
 
      </main>

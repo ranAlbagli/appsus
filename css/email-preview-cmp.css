@@ -6,6 +6,7 @@
     transition: .3s;
     background-color: #f1f4f4;
     font-family: 'Lato-light';
+    cursor: pointer;
 }
 
 .email-row:hover {

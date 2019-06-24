@@ -7,6 +7,9 @@
     transition: .3s;
     break-inside: avoid-column;
     /* width: 500px; */
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
 }
 
 .note:hover {
