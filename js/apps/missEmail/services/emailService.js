@@ -68,6 +68,7 @@ function createEmail(email) {
     "isRead": false,
     "from": email.from,
     "isFavorite": false,
+    "isDeleted":false,
     "sentAt": Date.now()
 
   }

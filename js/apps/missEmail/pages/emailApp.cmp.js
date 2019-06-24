@@ -4,6 +4,7 @@ import emailList from '../cmps/email-list.cmp.js'
 import emailFilter from '../cmps/email-filter.cmp.js'
 import emailStatus from '../cmps/email-status.cmp.js'
 import emailCompose from '../cmps/email-compose-cmp.js'
+import emailDetails from '../cmps/email-details.cmp.js'
 
 import { bus, MAIL_MARK_READ, MAIL_DELETE, MAIL_MARK_FAVORITE } from '../../../services/eventBus-service.js'
 
@@ -23,12 +24,12 @@ export default {
                 <nav class="mails-aside-nav">
                     <ul class="clean-list">
                         <li><a class="active" href="#">inbox ({{emailsUnreadCount}})</a></li>
-                        <li><a href="#">Deleted</a></li>
+                        <li><a href="#" >Deleted</a></li>
                         <li>
                             <email-status 
-                            :totalCount="emailTotalCount"
-                            :readCount="emailReadCount">
-                        </email-status>
+                                :totalCount="emailTotalCount"
+                                :readCount="emailReadCount">
+                            </email-status>
                         </li>
                     </ul>
                 </nav>
@@ -60,6 +61,7 @@ export default {
                 </div>
             </div>
             <email-list :emails="emailsToShow"></email-list>
+            <email-details class="ui-box"></email-details>
         </div>
 
      </main>
@@ -143,7 +145,8 @@ export default {
         emailList,
         emailFilter,
         emailStatus,
-        emailCompose
+        emailCompose,
+        emailDetails
     }
 
 }

@@ -11,8 +11,7 @@ export default {
                 :width="1280" 
                 :height="720" 
                 :src="videoUrl" 
-                frameborder="0" allow="accelerometer; 
-                autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                frameborder="0" 
                 allowfullscreen
                 ></iframe>
             </div>            

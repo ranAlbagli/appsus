@@ -126,10 +126,13 @@ body, h1, h2, h3, h4, h5, h6, p {
 .wrap {
   flex-wrap: wrap;
 }
-.one{
-   background-color: green;
 
+.bold-text{
+  font-family: 'Lato-black',sans-serif;
 }
-.two{
-   background-color: antiquewhite
+.regular-text{
+  font-family: 'Lato-regular',sans-serif;
+}
+.light-text{
+  font-family: 'Lato-light',sans-serif;
 }
