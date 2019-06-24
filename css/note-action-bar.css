@@ -1,0 +1,28 @@
+
+.note-action-bar{
+	margin-top: 10px;	
+}
+
+.note-action-bar i{
+	cursor: pointer;
+	color: #666;
+}
+
+.note-action-bar i:hover {
+	color: black;
+}
+
+.notes-edit input{
+	width: 100%;
+     margin-top: 10px;
+}
+
+.notes-edit i{
+    cursor: pointer;
+	color: #666;
+	padding: 10px
+}
+
+.notes-edit i:hover {
+	color: black;
+}

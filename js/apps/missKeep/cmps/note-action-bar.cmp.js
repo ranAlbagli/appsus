@@ -3,14 +3,13 @@ import { bus, KEEP_DELETE,KEEP_PINNED,KEEP_MARKED, KEEP_STYLED,KEEP_EDIT } from 
 export default {
 	props: ['keep','noteTypesInfo'],
 	template: `
-		<section class="note-item-actions flex space-between">
+		<section class="note-action-bar flex space-between">
 
-			  <i :class="getIconClass" :title="getIconTitle"></i> 
+			  <i :class="getIconClass"></i> 
 			  <span> &nbsp; </span>  
 			<i class="fas fa-thumbtack" :class="{pinned: keep.settings.isPinned}" title="Pin keep" @click="pinKeep"></i>
-			<!-- <i class="fas fa-check" :class="{marked: keep.settings.isMarked}" title="Mark note" @click="markNote"></i> -->
 			<i class="fas fa-palette info colors dropdown" title="Change keep color">
-				<div class="dropdown-content">
+				<div class="dropdown-colors">
 					<template v-for="color in Colors">
 						<span :style="{'background-color': color.value}"
 							:class="getBgColorClass(color.value)"
@@ -18,18 +17,16 @@ export default {
 					</template>
 				</div>
 			</i>
-			<i class="fas fa-edit" :class="{marked: keep.settings.editMode}" title="Edit note" @click="editNote"></i>
+			<i class="fas fa-edit"  title="Edit note" @click="editNote"></i>
 			<i class="fas fa-trash-alt danger" title="Delete keep" @click="removeNote"></i>
 
 		</section>
 	`,
 	computed: {
 		getIconClass() {
-			return this.noteTypesInfo.icon + ' visible';
+			return this.noteTypesInfo.icon ;
 		},
-		getIconTitle() {
-			return this.capitalizeFirstLetter(this.keep.settings.type + ' note');
-		},
+
     },
     created(){
            
@@ -51,9 +48,7 @@ export default {
 		removeNote() {
 			bus.$emit(KEEP_DELETE, this.keep._id);
 		},
-		capitalizeFirstLetter(string) {
-			return string.charAt(0).toUpperCase() + string.slice(1);
-		},
+	
 		getBgColorClass(color) {
 			return (this.keep.bgColor === color) ? 'selected' : '';
 		},
