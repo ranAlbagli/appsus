@@ -2,7 +2,7 @@
 
 export default {
 	template: `
-		<section class="search notes-filter flex justify-content-center">
+		<section class="search notes-filter flex justify-center">
 
 			<div>
 				<button class="fas fa-search" @click="updateFilter"></button>

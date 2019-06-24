@@ -6,8 +6,11 @@ export default {
 		<section class="notes-edit">
 
 			<input type="text" autocomplete="off" v-model="newData" />
-			<button @click="cancelEdit">Cancel</button>
-			<button @click="saveEdit">Update</button>
+			<div class="flex justify-center">
+			<i class="fas fa-times" @click="cancelEdit"></i>
+			<i class="fas fa-check" @click="saveEdit"></i>
+			</div>
+		
 
 		</section>
 	`,

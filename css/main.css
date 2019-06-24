@@ -9,6 +9,14 @@
 @import 'keep-todo-cmp.css';
 @import 'note-container.css';
 @import 'responsive-video.css';
+
+
+@import 'note-action-bar.css';
+@import 'masonry-container.css';
+
+
+
+
 /* Font-face */
 
 @font-face {
@@ -75,13 +83,13 @@ body, h1, h2, h3, h4, h5, h6, p {
   width: 75vw;
 }
 
-.masonry {
-	/* margin: 0 auto 2em; */
-  column-gap: 1.5em;
-  column-count: 4;
-  /* height: 100vh; */
-  padding: 20px;
+
+
+.pinned{
+  color: red;
 }
+
+
 
 /* Helpers */
 
@@ -122,6 +130,10 @@ body, h1, h2, h3, h4, h5, h6, p {
 .justify-left {
   justify-content: left;
 }
+.justify-center {
+	justify-content: center;
+}
+
 
 .wrap {
   flex-wrap: wrap;

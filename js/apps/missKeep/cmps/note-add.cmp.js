@@ -4,12 +4,12 @@ import { keepService } from '../services/keepService.js';
 export default {
 	props: ['noteTypes'],
 	template: `
-		<section class="notes-add flex ">
+		<section class="notes-add flex justify-center ">
 
 			<input :type="fieldType" autocomplete="off" v-model="userData"
 				:placeholder="placeholder" @keyup.enter="addKeep" ref="newNoteEl" />
 
-			<div class="flex">
+			<div class="flex space-between">
 				<template v-for="(noteType, idx) in noteTypes">
 					<i :class="setSelectedType(idx, noteType.icon)" @click="updateSelectedType(idx)"></i> 
 				</template>
