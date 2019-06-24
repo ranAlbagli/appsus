@@ -141,16 +141,11 @@ export default {
         pinnedNotesToShow() {
             let keeps = this.keepsToShow()
             let pinnedKeeps = keeps.filter(keep => (keep.settings.isPinned));
-            console.log(pinnedKeeps.length);
-
             return pinnedKeeps;
         },
         unpinnedNotesToShow() {
             let keeps = this.keepsToShow()
             let unpinnedKeeps = keeps.filter(keep => (!keep.settings.isPinned));
-
-            console.log(unpinnedKeeps.length);
-            
             return unpinnedKeeps
         }
 

@@ -6,7 +6,6 @@ const appRouter = new VueRouter({ routes: theRoutes })
 
 import appHeader from './cmps/app-header.cmp.js'
 import appFooter from './cmps/app-footer.cmp.js'
-// import homePage from './pages/homePage.js';
 
 var app = new Vue({
     el: '#app',
