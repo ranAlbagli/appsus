@@ -1,7 +1,6 @@
 .email-details {
     padding: 10px;
     transition: .3s;
-    border: 1px solid #dadada;
 }
 
 .email-from-details {
@@ -26,8 +25,9 @@
     color: #b3b3b3;
     margin-left: 5px;
 }
-.email-details-body{
-    margin-bottom:20px;
+
+.email-details-body {
+    margin-bottom: 20px;
 }
 
 .email-details-footer {
@@ -35,7 +35,15 @@
     justify-content: center;
     /* text-align: right; */
 }
-.details-date{
+
+.details-date {
     color: #b3b3b3;
     text-align: right;
+}
+
+.details-ctrl-btn {
+    border: none;
+    cursor: pointer;
+    outline: none;
+    background-color: rgba(0, 0, 0, 0.0);
 }

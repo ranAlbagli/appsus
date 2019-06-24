@@ -5,7 +5,7 @@ import { bus, MAIL_DELETE, MAIL_MARK_FAVORITE, MAIL_MARK_READ } from '../../../s
 
 export default {
     template: `
-        <section>
+        <section class="email-row-container">
             <div v-if="!dispalyDetails" class="email-row flex align-center space-between" :class="isRead" @click.stop="showDetails">
                         <div class="email-star"><button @click.stop="emitEmailFavorite"><i :class="isFavorite" class="fas fa-star" ></i></button></div>
                         <div class="email-sender-pic"><img :src="avatar" alt=""></div>

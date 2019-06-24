@@ -4,13 +4,13 @@ export default {
                     <div class="email-details-header">
                         <div class="email-subject flex space-between align-center">
                             <div class="flex align-center">
-                                <button @click.stop="emitFavorite"><i :class="this.isFavorite"  class="fas fa-star" ></i></button>
+                                <button class="details-ctrl-btn" @click.stop="emitFavorite"><i :class="this.isFavorite"  class="fas fa-star" ></i></button>
                                 <h2 class="bold-text">{{this.email.subject}}</h2>
                             </div>
                             <div class="flex align-center">
                                 <div>
-                                    <button disabled><i :class="this.isRead" ></i></button>
-                                    <button @click.stop="emitEmailDelete"><i class="fas fa-trash"></i></button>
+                                    <button class="details-ctrl-btn" disabled><i :class="this.isRead" ></i></button>
+                                    <button class="details-ctrl-btn" @click.stop="emitEmailDelete"><i class="fas fa-trash"></i></button>
                                 </div>
                             </div>
                         </div>
