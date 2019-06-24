@@ -57,7 +57,6 @@ export default {
 				settings: {
 					type: 'note-text',
 					isPinned: false,
-					isMarked: false,
 					editMode: false,
 				},
 				bgColor: '',

@@ -29,7 +29,7 @@ export default {
             noteTypes: {
                 'note-text': { field: 'text', icon: 'fas fa-font', placeholder: 'What’s on your mind...' },
                 'note-img': { field: 'url', icon: 'far fa-image', placeholder: 'Enter image URL...' },
-                'note-video': { field: 'url', icon: 'fab fa-youtube', placeholder: 'Enter video URL...' },
+                'note-video': { field: 'url', icon: 'fab fa-youtube', placeholder: 'Enter youtube link...' },
                 'note-audio': { field: 'url', icon: 'fas fa-volume-up', placeholder: 'Enter audio URL...' },
                 'note-todo': { field: 'text', icon: 'fas fa-list', placeholder: 'Enter comma separated list...' },
             },

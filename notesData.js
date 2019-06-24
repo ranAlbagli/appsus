@@ -4,10 +4,9 @@ export const notesTestData = [
         settings: {
             type: 'note-text',
             isPinned: false,
-            isMarked: false,
             editMode: false
         },
-        bgColor: 'red',
+        bgColor: '#ddbbff',
         data: {
             text: "This is very interesting note",
         },
@@ -17,7 +16,6 @@ export const notesTestData = [
         settings: {
             type: 'note-video',
             isPinned: false,
-            isMarked: false,
             editMode: false
         },
         bgColor: '#fff',
@@ -31,7 +29,6 @@ export const notesTestData = [
         settings: {
             type: 'note-video',
             isPinned: false,
-            isMarked: false,
             editMode: false
         },
         bgColor: '#fff',
@@ -45,7 +42,6 @@ export const notesTestData = [
         settings: {
             type: 'note-img',
             isPinned: false,
-            isMarked: false,
             editMode: false
         },
         bgColor: '#fff',
@@ -58,12 +54,11 @@ export const notesTestData = [
         settings: {
             type: 'note-audio',
             isPinned: false,
-            isMarked: false,
             editMode: false
         },
         bgColor: '#fff',
         data: {
-            src: 'https://www22.zippyshare.com/d/Fxx2xFO4/954426/%d7%a1%d7%98%20%d7%99%d7%95%d7%9d%20%d7%94%d7%a2%d7%a6%d7%9e%d7%90%d7%95%d7%aa%202019.mp3',
+            src: 'https://www45.zippyshare.com/d/psWRFqs8/814140/Game%20Of%20Thrones%20-%20Theme%20Song%20%28Trias%20Trap%20Remix%29%20%28%20VitanMp3.Net%20%29.mp3',
         },
     },
     {
@@ -71,16 +66,15 @@ export const notesTestData = [
         settings: {
             type: 'note-todo',
             isPinned: false,
-            isMarked: false,
             editMode: false
         },
         bgColor: '#aaaaaa',
         data: {
             todos: [
-                { text: 'Wash my car', completed: false },
+                { text: 'Get some sleep', completed: false },
                 { text: 'submit 3rd sprint app to yaron', completed: true },
-                { text: 'drink a beer', completed: true },
-                { text: 'Get vue sticker', completed: false },
+                { text: 'Learn back-end', completed: true },
+                { text: 'Find a job', completed: false },
             ]
         },
     },
@@ -89,10 +83,9 @@ export const notesTestData = [
         settings: {
             type: 'note-text',
             isPinned: false,
-            isMarked: false,
             editMode: false
         },
-        bgColor: 'red',
+        bgColor: '#aaffee',
         data: {
             text: "This is very interesting note",
         },
@@ -102,7 +95,6 @@ export const notesTestData = [
         settings: {
             type: 'note-video',
             isPinned: false,
-            isMarked: false,
             editMode: false
         },
         bgColor: '#fff',
@@ -115,7 +107,6 @@ export const notesTestData = [
         settings: {
             type: 'note-img',
             isPinned: false,
-            isMarked: false,
             editMode: false
         },
         bgColor: '#fff',
@@ -128,7 +119,6 @@ export const notesTestData = [
         settings: {
             type: 'note-audio',
             isPinned: false,
-            isMarked: false,
             editMode: false
         },
         bgColor: '#fff',
@@ -141,7 +131,6 @@ export const notesTestData = [
         settings: {
             type: 'note-todo',
             isPinned: false,
-            isMarked: false,
             editMode: false
         },
         bgColor: '#aaaaaa',

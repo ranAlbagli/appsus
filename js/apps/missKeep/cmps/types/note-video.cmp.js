@@ -39,9 +39,7 @@ export default {
         videoYoutubeUrl(){
             var myYoutubeRegexp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i;
             const id = myYoutubeRegexp.exec(this.keep.data.src)[1]
-            const url = `https://www.youtube.com/embed/${id}`;
-            console.log(url, 'from component');
-            	
+            const url = `https://www.youtube.com/embed/${id}`;      	
             return url;
             
         }
