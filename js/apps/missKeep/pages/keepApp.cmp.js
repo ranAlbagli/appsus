@@ -104,6 +104,7 @@ export default {
         },
         keepsToShow() {
             let keeps = this.keeps;
+<<<<<<< HEAD
             if (this.filter && this.filter.type !== '') {
                 keeps = keeps.filter(keep => this.filter.type === keep.settings.type)
             }
@@ -130,6 +131,33 @@ export default {
             }
 
             return keeps;
+=======
+			if (this.filter && this.filter.type !== '') {
+				keeps = keeps.filter(keep => this.filter.type === keep.settings.type)
+			}
+
+			if (this.filter && this.filter.txt) {
+                let searchTerm = this.filter.txt             
+				keeps = keeps.filter(keep => {
+					let strValue = '';
+					switch (keep.settings.type) {
+						case 'note-text':
+                            strValue = keep.data.text;   
+							break;
+						case 'note-img':
+						case 'note-video':
+						case 'note-audio':
+							break;
+						case 'note-todo':
+							strValue = keep.data.todos.map(todo => todo.text).join(',');
+							break;
+                    }
+					return strValue.indexOf(searchTerm)!==-1;
+				})
+			}
+
+			return keeps;
+>>>>>>> 07a8dbc5d22b6265cf90b5bf30fd5005d13ba87d
         },
 
     },

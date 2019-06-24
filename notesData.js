@@ -120,7 +120,7 @@ export const notesTestData = [
         },
         bgColor: '#fff',
         data: {
-            src: "https://api.adorable.io/avatars/285/puki.png",
+            src: "https://api.adorable.io/avatars/285/popo.png",
         },
     },
     {
